@@ -5,10 +5,10 @@ import ResultsGrid from './components/ResultsGrid/ResultsGrid';
 import './SearchResults.css';
 import { useMemo } from 'react';
 import SearchResultsService from './services/searchResultsService';
-import Card from '../../components/Card/Card';
+import Card from './components/Card/Card';
 
 export default function SearchResults() {
-  const [results, setResults] = useOutletContext();
+  const [results, setResults, input, setInput] = useOutletContext();
 
   const paginatedResults = useMemo(() => {
     const pages = SearchResultsService.getGridPages(results);
@@ -23,7 +23,7 @@ export default function SearchResults() {
 
   return (
     <div className="search-results">
-      <Filter f={setResults} />
+      <Filter f={setResults} searchInput={input} setInput={setInput} />
       <ResultsGrid pages={paginatedResults} />
     </div>
   );
