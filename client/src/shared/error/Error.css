@@ -1,0 +1,16 @@
+@keyframes showDown {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+p.error {
+  color: #cf3a1b;
+  font-weight: 600;
+  animation: showDown 0.25s;
+  margin-bottom: calc(5px - 1.9rem);
+  margin-top: 5px;
+}

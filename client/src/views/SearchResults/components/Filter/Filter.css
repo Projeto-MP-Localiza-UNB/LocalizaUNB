@@ -1,0 +1,73 @@
+.filter-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 2.5px;
+  width: calc(90vw - 50px);
+  margin: 10px auto 10px auto;
+  align-items: center;
+}
+
+.filter-container .search-form {
+  justify-self: right;
+}
+
+.filter-container p,
+.filter-container span {
+  color: #000;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.filter-container span {
+  color: #133e79;
+}
+
+.filter-container .sort {
+  grid-row: 2;
+  padding: 0 0 5px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.filter-container .options {
+  position: relative;
+}
+
+.filter-container .options button {
+  background: none;
+  border: none;
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.filter-container svg {
+  grid-row: 3;
+  grid-column: 1/-1;
+}
+
+.filter-container .options .sign {
+  position: absolute;
+  bottom: -8.125px;
+  transition: left 0.25s, width 0.25s;
+}
+
+.filter-container .options .sign.produto {
+  width: 65%;
+  left: -2.5px;
+  position: absolute;
+  bottom: -8.125px;
+}
+
+.filter-container .options .sign.loja {
+  width: 37.5%;
+  left: 90px;
+  position: absolute;
+  bottom: -8.125px;
+}

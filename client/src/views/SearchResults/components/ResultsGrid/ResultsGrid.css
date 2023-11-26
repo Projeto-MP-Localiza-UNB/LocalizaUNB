@@ -1,0 +1,83 @@
+@keyframes hideLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-100vw, 0, 0);
+  }
+}
+
+@keyframes hideRight {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(100vw, 0, 0);
+  }
+}
+
+.grid-container {
+  display: flex;
+  align-items: center;
+  height: calc(100% - 125px);
+  gap: 20px;
+}
+
+.results-grid {
+  display: grid;
+  width: 100vw;
+  height: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  column-gap: 50px;
+  row-gap: 25px;
+  padding: 0;
+}
+
+.results-grid.hide-left {
+  animation: hideLeft 0.25s forwards ease-in;
+}
+
+.results-grid.hide-right {
+  animation: hideRight 0.25s forwards ease-in;
+}
+
+.results-grid.show-left {
+  animation: hideLeft 0.25s reverse forwards ease-in;
+}
+
+.results-grid.show-right {
+  animation: hideRight 0.25s reverse forwards ease-in;
+}
+
+.results-grid li {
+  height: 100%;
+  list-style: none;
+  transition: transform 0.25s;
+  cursor: pointer;
+}
+
+.results-grid li:hover {
+  transform: scale3d(1.05, 1.05, 1.05);
+}
+
+.grid-container button {
+  border: none;
+  background: none;
+  transition: transform 0.25s;
+  padding: 0;
+}
+
+.grid-container button:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.grid-container button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.grid-container button img {
+  width: 5vw;
+}

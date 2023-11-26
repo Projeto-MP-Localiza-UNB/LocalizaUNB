@@ -1,0 +1,5 @@
+.search-results {
+  width: 100%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(50, 50, 50, 0.125);
+}

@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+//npx prisma studio // abre no navegar o prisma studio
+//npx prisma migrate dev // aplicar alterações desse codigo 
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.db"
+}
+
+model Loja{
+  id Int @id @default(autoincrement())
+  email String @unique
+  senha String
+  nome String
+  imagem String?
+  longitude_fixa Float?
+  latitude_fixa Float?
+  quantidade_avaliacao Int @default(0)
+  nota Int @default(5)
+  produtos Produto[] 
+}
+
+model Produto{
+  id Int @id @default(autoincrement())
+  nome String
+  descricao String
+  imagem String?
+  quantidade_avaliacao Int @default(0)
+  nota Int @default(5)
+  loja Loja @relation(fields: [idLoja], references: [id])  
+  idLoja Int
+}
+
+model Usuario{
+  id Int @id @default(autoincrement())
+  nome String
+  email String @unique
+  senha String
+  admin Boolean @default(false)
+  longitude_fixa Float
+  latitude_fixa Float
+}

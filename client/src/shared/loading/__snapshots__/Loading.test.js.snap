@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders the loading symbol correctly after status change 1`] = `null`;
+
+exports[`Renders the loading symbol correctly after status change 2`] = `
+<div
+  className="loading-container"
+>
+  <img
+    alt="Ícone de carregamento"
+    src="Ripple-1s-200px.svg"
+  />
+  <p />
+</div>
+`;
+
+exports[`Renders the loading symbol with given message correctly 1`] = `
+<div
+  className="loading-container"
+>
+  <img
+    alt="Ícone de carregamento"
+    src="Ripple-1s-200px.svg"
+  />
+  <p>
+    Lorem Ipsum
+  </p>
+</div>
+`;

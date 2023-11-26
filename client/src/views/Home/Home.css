@@ -1,0 +1,38 @@
+main {
+  background-image: url('../../img/bg.png');
+  background-size: contain;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+}
+
+.main_container {
+  background-color: #e7ecf6;
+  border-radius: 15px;
+  width: 600px;
+  height: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 9rem;
+  padding: 2rem 2rem 4rem 2rem;
+  box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+}
+
+.main_container h1 {
+  font-weight: 800;
+  color: #133e79;
+  font-size: 2.5rem;
+  margin: 0;
+  font-family: Inter;
+}
+
+.main_container p {
+  color: #133e79;
+  font-size: 1.3rem;
+  padding: 0 2rem 0 2rem;
+  margin: 1rem 0 1rem 0;
+  font-family: Inter;
+}

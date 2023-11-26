@@ -1,0 +1,70 @@
+header {
+  width: 100%;
+  height: 8.75rem;
+  background: #4dac79;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.logo {
+  margin: 1.87rem 1.1rem 1.87rem 1.87rem;
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+}
+
+.logo_unb {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.unb {
+  color: #133e79;
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-right: 1.75rem;
+}
+
+.text {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.create-account {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 1.25rem;
+}
+
+.create-account:hover {
+  color: #c4c4c4;
+}
+
+.login {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: 0.9375rem;
+  background: #008940;
+  margin-right: 3rem;
+}
+
+.login:hover {
+  color: #c4c4c4;
+  background: #006b32;
+}
