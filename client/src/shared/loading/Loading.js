@@ -5,8 +5,8 @@ export default function Loading({ status, message = '' }) {
     <>
       {status ? (
         <div className="loading-container">
-          <div class="loadingio-spinner-ripple-5xy4c5zt29d">
-            <div class="ldio-g8ch4tbk3qp">
+          <div className="loadingio-spinner-ripple-5xy4c5zt29d">
+            <div className="ldio-g8ch4tbk3qp">
               <div></div>
               <div></div>
             </div>
