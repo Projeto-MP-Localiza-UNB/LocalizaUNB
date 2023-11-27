@@ -31,7 +31,9 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <Outlet context={[results, setResults, input, setInput]} />
+          <Outlet
+            context={[results, setResults, input, setInput, setLoading]}
+          />
         )}
       </main>
     </>

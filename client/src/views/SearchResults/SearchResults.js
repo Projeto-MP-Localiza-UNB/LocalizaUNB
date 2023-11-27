@@ -8,7 +8,7 @@ import SearchResultsService from './services/searchResultsService';
 import Card from './components/Card/Card';
 
 export default function SearchResults() {
-  const [results, setResults, input, setInput] = useOutletContext();
+  const [results, setResults, input, setInput, setLoading] = useOutletContext();
 
   const paginatedResults = useMemo(() => {
     const pages = SearchResultsService.getGridPages(results);
@@ -23,7 +23,12 @@ export default function SearchResults() {
 
   return (
     <div className="search-results">
-      <Filter f={setResults} searchInput={input} setInput={setInput} />
+      <Filter
+        f={setResults}
+        searchInput={input}
+        setInput={setInput}
+        setLoading={setLoading}
+      />
       <ResultsGrid pages={paginatedResults} />
     </div>
   );

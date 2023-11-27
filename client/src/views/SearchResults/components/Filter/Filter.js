@@ -3,14 +3,14 @@ import { Search } from '../../../../shared/search/Search';
 
 import './Filter.css';
 
-export default function Filter({ f, searchInput, setInput }) {
+export default function Filter({ f, searchInput, setInput, setLoading }) {
   const [type, setType] = useState('produto');
   return (
     <div className="filter-container">
       <p>
         Buscando por <span>{searchInput}</span>
       </p>
-      <Search setter={f} input={setInput} />
+      <Search setter={f} input={setInput} loading={setLoading} />
       <div className="sort">
         <div className="options">
           <button onClick={() => setType('produto')}>Produtos</button>
