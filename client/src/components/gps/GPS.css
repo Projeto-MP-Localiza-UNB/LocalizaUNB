@@ -1,0 +1,14 @@
+.gps-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 185px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.gps-container p {
+  margin-bottom: 10px;
+  font-family: Inter;
+  font-weight: 600;
+}
