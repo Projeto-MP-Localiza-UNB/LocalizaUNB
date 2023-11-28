@@ -3,14 +3,27 @@ import { Search } from '../../../../shared/search/Search';
 
 import './Filter.css';
 
-export default function Filter({ f, searchInput, setInput, setLoading }) {
+/**
+ * Componente do filtro da página de apresentação de resultados. Constitui o cabeçalho dessa página.
+ * @param {function} setResults Função para definir o estado dos resultados
+ * @param {string} searchInput Entrada do usuário no campo de pesquisa
+ * @param {function} setInput Função para definir o estado da entrada
+ * @param {function} setLoading Função para definir o estado do componente de carregamento
+ * @returns
+ */
+export default function Filter({
+  setResults,
+  searchInput,
+  setInput,
+  setLoading,
+}) {
   const [type, setType] = useState('produto');
   return (
     <div className="filter-container">
       <p>
         Buscando por <span>{searchInput}</span>
       </p>
-      <Search setter={f} input={setInput} loading={setLoading} />
+      <Search setter={setResults} input={setInput} loading={setLoading} />
       <div className="sort">
         <div className="options">
           <button onClick={() => setType('produto')}>Produtos</button>

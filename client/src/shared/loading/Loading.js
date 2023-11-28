@@ -1,5 +1,10 @@
 import './Loading.css';
 
+/**
+ * Componente para apresentação de estado de carregamento
+ * @param {boolean} status - Estado do carregamento. Altere para _true_ para renderizar o componente.
+ * @param {string} message - Mensagem opcional localizada abaixo do símbolo de carregamento
+ */
 export default function Loading({ status, message = '' }) {
   return (
     <>
