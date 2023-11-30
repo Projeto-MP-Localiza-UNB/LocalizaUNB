@@ -1,4 +1,4 @@
-# Os inicializadores .bat so funcionam no windows 
+# Inicializador para Linux
 
 .PHONY: install-client start-client install-server start-server start-prisma
 
