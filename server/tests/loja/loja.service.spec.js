@@ -75,10 +75,10 @@ describe("service de lojas", () => {
 
     describe("login como loja", () => {
         describe("erro de credenciais de acesso", () => {
-            it("deve lançar exceção de erro por e-mail inválido", () => {
+            it("deve lançar exceção de erro por e-mail inválido", async () => {
                 let mockEmail;
 
-                prismaMock.loja.findUnique.mockResolvedValue(null);
+                await prismaMock.loja.findUnique.mockResolvedValue(null);
 
                 mockEmail = faker.internet.email();
 
@@ -89,14 +89,14 @@ describe("service de lojas", () => {
                 const tokensOnError = async () => {
                     await lojaService.entrarLoja(mockEmail, lojaData.senha);
                 };
-
+                debugger;
                 expect(tokensOnError()).rejects.toThrow("Loja não encontrada");
             });
 
             it("deve lançar exceção de erro por senha inválida", () => {
                 let mockPwd;
 
-                prismaMock.loja.findUnique.mockResolvedValue(null);
+                prismaMock.loja.findUnique.mockResolvedValue({ ...lojaData });
 
                 mockPwd = faker.internet.password();
 
@@ -112,7 +112,14 @@ describe("service de lojas", () => {
             });
         });
 
-        it("deve retornar o token resultante da autenticação", () => {});
+        it("deve retornar o token resultante da autenticação", async () => {
+            const { token } = await lojaService.entrarLoja(
+                lojaData.email,
+                lojaData.senha
+            );
+
+            expect(typeof token).toBe("string");
+        });
     });
 
     describe("buscar lojas", () => {});
