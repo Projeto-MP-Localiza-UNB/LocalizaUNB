@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import { Search } from '../../shared/search/Search';
 import Loading from '../../shared/loading/Loading';
-import GPS from '../../components/gps/GPS';
 
 const Home = () => {
   const [results, setResults] = useState([]);
@@ -30,7 +29,6 @@ const Home = () => {
                 loading={setLoading}
               />
             </div>
-            <GPS showHeader={true} />
           </div>
         ) : (
           <Outlet
