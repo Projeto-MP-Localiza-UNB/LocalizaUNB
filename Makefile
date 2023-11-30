@@ -17,7 +17,7 @@ install-server:
 	cd server && npm install
 
 start-server:
-	cd server && node index.js
+	cd server && node index.js &
 
 start-prisma:
 	cd server && npx prisma studio &
