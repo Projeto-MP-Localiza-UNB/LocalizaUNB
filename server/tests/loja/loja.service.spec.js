@@ -89,7 +89,7 @@ describe("service de lojas", () => {
                 const tokensOnError = async () => {
                     await lojaService.entrarLoja(mockEmail, lojaData.senha);
                 };
-                debugger;
+
                 expect(tokensOnError()).rejects.toThrow("Loja não encontrada");
             });
 
@@ -122,7 +122,23 @@ describe("service de lojas", () => {
         });
     });
 
-    describe("buscar lojas", () => {});
+    describe("buscar lojas", () => {
+        // Só tá passando na primeira execução
+        // Da segunda execução em diante, o array de lojas aumenta
+        // Eu não consigo rastrear os elementos que compõem o array
+        // Provavelmente meu mock está errado, porque era para o mock simular o retorno
+        it("deve retornar lojas cadastradas", async () => {
+            prismaMock.loja.findMany.mockResolvedValueOnce([lojaData]);
+
+            const lojas = await lojaService.procurarLojas();
+
+            const [{ senha: _senha, id: _id, ...lojasData }] = lojas;
+
+            const { senha: _loja_senha, id: _loja_id, ..._lojaData } = lojaData;
+
+            expect(lojasData).toEqual(_lojaData);
+        });
+    });
 
     describe("buscar uma loja específica", () => {});
 });
