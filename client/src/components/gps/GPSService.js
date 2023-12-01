@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 export default class GPSService {
-  static async init(el, coordinates = null) {
+  static async init(el, coordinates = null, draggable = false) {
     const { Map } = await google.maps.importLibrary('maps');
 
     return new Map(el, {
@@ -8,6 +8,7 @@ export default class GPSService {
       center: coordinates,
       mapId: 'MAP_ID',
       disableDefaultUI: true,
+      draggable: draggable,
     });
   }
 
@@ -33,5 +34,14 @@ export default class GPSService {
       lat: marker.position.lat(),
       lng: marker.position.lng(),
     };
+  }
+
+  static getUserMarkerPosition(map, coordinates) {
+    return new google.maps.Marker({
+      map: map,
+      position: coordinates,
+      animation: google.maps.Animation.DROP,
+      title: 'Você está aqui! XD',
+    });
   }
 }

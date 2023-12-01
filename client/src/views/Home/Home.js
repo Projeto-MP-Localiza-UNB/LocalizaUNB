@@ -30,7 +30,13 @@ const Home = () => {
                 loading={setLoading}
               />
             </div>
-            <GPS showHeader={true} />
+            <div className="user-location">
+              <GPS
+                userCoordinates={true}
+                showLoadingMessage={false}
+                showMessage={true}
+              />
+            </div>
           </div>
         ) : (
           <Outlet

@@ -10,14 +10,13 @@ main {
   background-color: #e7ecf6;
   border-radius: 15px;
   width: 600px;
-  height: 75%;
+  height: fit-content;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 4.5rem;
-  padding: 2rem 2rem 4rem 2rem;
+  padding: 2rem 2rem 1rem 2rem;
   box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
 }
 
@@ -37,16 +36,22 @@ main {
   font-family: Inter;
 }
 
-.gps-container {
+.user-location {
   display: flex;
   flex-direction: column;
-  min-height: 185px;
+  height: 250px;
   width: 100%;
   overflow: hidden;
   border-radius: 5px;
+  margin-top: 10px;
 }
 
-.gps-container p {
+.user-location .gps-container .map {
+  border: 2px solid #133e79;
+  border-radius: 5px;
+}
+
+.user-location p {
   margin-bottom: 10px;
   font-family: Inter;
   font-weight: 600;

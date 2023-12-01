@@ -7,9 +7,15 @@ import GPSService from './GPSService';
 
 const UNBcoordinates = { lat: -15.766097, lng: -47.870604 };
 
-const GPS = ({ userCoordinates, marker, setMarker }) => {
+const GPS = ({
+  userCoordinates,
+  marker,
+  setMarker,
+  showMessage = false,
+  showLoadingMessage = true,
+}) => {
   const [coordenadas, setCoordenadas] = useState({ lat: null, lng: null });
-  const [message, setMessage] = useState('Obtendo localização...');
+  const [message, setMessage] = useState('Obtendo sua localização...');
   const [loading, setLoading] = useState(true);
   const [map, setMap] = useState(null);
   const mapRef = useRef();
@@ -24,21 +30,39 @@ const GPS = ({ userCoordinates, marker, setMarker }) => {
   );
 
   useEffect(() => {
+    // Initialize map
     async function getMap() {
       await GPSService.init(
         mapRef.current,
-        coordenadas.lat && coordenadas.lng ? coordenadas : UNBcoordinates
+        coordenadas.lat && coordenadas.lng ? coordenadas : UNBcoordinates,
+        !userCoordinates
       ).then((map) => {
         setMap(map);
-        map.addListener('click', (e) => {
-          GPSService.setLocation(e, map).then(updateMarker);
-        });
+        if (!userCoordinates) {
+          map.addListener('click', (e) => {
+            GPSService.setLocation(e, map).then(updateMarker);
+          });
+        } else {
+          if (coordenadas.lat && coordenadas.lng) {
+            GPSService.getUserMarkerPosition(map, coordenadas);
+          }
+        }
       });
+      if (userCoordinates) setMessage('Você está aqui! :)');
       setLoading(false);
     }
     if (!map) getMap();
+
+    // Set marker in map
     marker?.setMap(map);
-  }, [mapRef, coordenadas, map, marker, updateMarker]);
+
+    // Cleanup
+    return () => {
+      if (map && userCoordinates) {
+        setMap(null);
+      }
+    };
+  }, [mapRef, coordenadas, map, marker, updateMarker, userCoordinates]);
 
   useEffect(() => {
     if (userCoordinates) {
@@ -77,10 +101,11 @@ const GPS = ({ userCoordinates, marker, setMarker }) => {
         <Loading
           status={loading}
           fitContainer={true}
-          message="Carregando mapa"
+          message={showLoadingMessage ? 'Carregando mapa' : ''}
         />
         <div ref={mapRef} className="map"></div>
       </div>
+      {showMessage ? <p className="gps-message">{message}</p> : <></>}
     </>
   );
 };
