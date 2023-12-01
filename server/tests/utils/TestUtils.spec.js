@@ -1,4 +1,5 @@
 import { TestUtils } from "./TestUtils";
+import { describe, expect, jest, it, beforeEach } from "@jest/globals";
 
 describe("utilitário de testes", () => {
     beforeEach(() => {
