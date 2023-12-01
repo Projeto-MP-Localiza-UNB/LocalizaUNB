@@ -32,10 +32,19 @@ class Loja {
 
     async entrarLoja(email, senha) {
         const loja = await prisma.loja.findUnique({ where: { email: email } });
-        if (!loja) throw new Error("Loja não encontrada");
-        if (!(await bcrypt.compare(senha, loja.senha)))
+
+        if (!loja) {
+            throw new Error("Loja não encontrada");
+        }
+
+        const passwordMatch = await bcrypt.compare(senha, loja.senha);
+
+        if (!passwordMatch) {
             throw new Error("Senha incorreta");
+        }
+
         const token = jwt.sign({ id: loja.id }, "secret", { expiresIn: "60m" });
+
         return { token };
     }
 
@@ -45,7 +54,7 @@ class Loja {
 
     async retornaLoja(id) {
         try {
-            const loja = await prisma.usuario.findUnique({
+            const loja = await prisma.loja.findUnique({
                 where: { id },
                 select: {
                     imagem: true,
