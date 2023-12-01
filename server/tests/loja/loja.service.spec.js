@@ -1,12 +1,15 @@
 import { faker } from "@faker-js/faker";
 import Loja from "../../loja/loja.service";
-import { prismaMock } from "../utils/PrismaMock";
+import { prismaMock } from "../../libs/__mocks__/prisma";
 import { TestUtils } from "../utils/TestUtils";
+import { describe, expect, jest, it } from "@jest/globals";
+import * as bcrypt from "bcrypt";
+
+jest.mock("bcrypt");
 
 describe("service de lojas", () => {
     let lojaService;
     let lojaData;
-    let lojaDataAnterior;
 
     beforeAll(() => {
         lojaService = new Loja();
@@ -35,21 +38,7 @@ describe("service de lojas", () => {
                     lojaData.latitude_fixa
                 );
 
-                const {
-                    senha: lojaCriadaSenha,
-                    id: lojaCriadaId,
-                    ...lojaCriadaData
-                } = lojaCriada;
-
-                const {
-                    senha: lojaMockSenha,
-                    id: lojaMockId,
-                    ...lojaMockData
-                } = lojaData;
-
-                lojaDataAnterior = lojaData;
-
-                expect(lojaCriadaData).toEqual(lojaMockData);
+                expect(lojaCriada).toEqual(lojaData);
             });
 
             it("deve lançar exceção de erro de e-mail já cadastrado", async () => {
@@ -74,38 +63,39 @@ describe("service de lojas", () => {
     });
 
     describe("login como loja", () => {
+        let bcryptCompare;
+
+        beforeEach(() => {
+            bcryptCompare = jest.fn().mockReturnValue(true);
+            bcrypt.compare = bcryptCompare;
+        });
+
         describe("erro de credenciais de acesso", () => {
             it("deve lançar exceção de erro por e-mail inválido", async () => {
-                let mockEmail;
-
                 await prismaMock.loja.findUnique.mockResolvedValue(null);
 
-                mockEmail = faker.internet.email();
-
-                while (mockEmail === lojaData.email) {
-                    mockEmail = faker.internet.email();
-                }
-
                 const tokensOnError = async () => {
-                    await lojaService.entrarLoja(mockEmail, lojaData.senha);
+                    await lojaService.entrarLoja(
+                        lojaData.email,
+                        lojaData.senha
+                    );
                 };
 
                 expect(tokensOnError()).rejects.toThrow("Loja não encontrada");
             });
 
-            it("deve lançar exceção de erro por senha inválida", () => {
-                let mockPwd;
+            it("deve lançar exceção de erro por senha inválida", async () => {
+                bcryptCompare.mockReturnValue(false);
 
-                prismaMock.loja.findUnique.mockResolvedValue({ ...lojaData });
-
-                mockPwd = faker.internet.password();
-
-                while (mockPwd === lojaData.senha) {
-                    mockPwd = faker.internet.password();
-                }
+                prismaMock.loja.findUnique.mockResolvedValue({
+                    ...lojaData,
+                });
 
                 const tokensOnError = async () => {
-                    await lojaService.entrarLoja(lojaData.email, mockPwd);
+                    await lojaService.entrarLoja(
+                        lojaData.email,
+                        lojaData.senha
+                    );
                 };
 
                 expect(tokensOnError()).rejects.toThrow("Senha incorreta");
@@ -113,7 +103,13 @@ describe("service de lojas", () => {
         });
 
         it("deve retornar o token resultante da autenticação", async () => {
-            const { token } = await lojaService.entrarLoja(
+            bcryptCompare.mockReturnValue(true);
+
+            prismaMock.loja.findUnique.mockResolvedValue({
+                ...lojaData,
+            });
+
+            const token = await lojaService.entrarLoja(
                 lojaData.email,
                 lojaData.senha
             );
@@ -132,13 +128,17 @@ describe("service de lojas", () => {
 
             const lojas = await lojaService.procurarLojas();
 
-            const [{ senha: _senha, id: _id, ...lojasData }] = lojas;
-
-            const { senha: _loja_senha, id: _loja_id, ..._lojaData } = lojaData;
-
-            expect(lojasData).toEqual(_lojaData);
+            expect(lojas).toEqual([lojaData]);
         });
     });
 
-    describe("buscar uma loja específica", () => {});
+    describe("buscar uma loja específica", () => {
+        it("deve retornar loja específica", async () => {
+            prismaMock.loja.findUnique.mockResolvedValue({ ...lojaData });
+
+            const loja = await lojaService.retornaLoja(lojaData.id);
+
+            expect(typeof loja).toBe("object");
+        });
+    });
 });
