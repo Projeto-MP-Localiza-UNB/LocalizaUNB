@@ -1,9 +1,9 @@
-import { faker } from "@faker-js/faker";
 import Loja from "../../loja/loja.service";
 import { prismaMock } from "../../libs/__mocks__/prisma";
 import { TestUtils } from "../utils/TestUtils";
 import { describe, expect, jest, it } from "@jest/globals";
 import * as bcrypt from "bcrypt";
+import { mock, mockReset } from "jest-mock-extended";
 
 jest.mock("bcrypt");
 
@@ -11,12 +11,16 @@ describe("service de lojas", () => {
     let lojaService;
     let lojaData;
 
+    const bcryptMock = mock({ compare: jest.fn() });
+
     beforeAll(() => {
         lojaService = new Loja();
         lojaData = TestUtils.gerarLoja();
     });
 
     beforeEach(() => {
+        mockReset(bcryptMock);
+
         jest.resetAllMocks();
     });
 
@@ -27,7 +31,7 @@ describe("service de lojas", () => {
     describe("criação de nova loja", () => {
         describe("criação de loja", () => {
             it("deve criar uma nova loja", async () => {
-                prismaMock.loja.create.mockResolvedValue({ ...lojaData });
+                prismaMock.loja.create.mockResolvedValue(lojaData);
 
                 const lojaCriada = await lojaService.cadastroLoja(
                     lojaData.email,
@@ -63,16 +67,14 @@ describe("service de lojas", () => {
     });
 
     describe("login como loja", () => {
-        let bcryptCompare;
+        // beforeEach(async () => {
+        //     bcryptCompare = jest.fn().mockReturnValue(true);
+        //     bcrypt.compare = bcryptCompare;
+        // });
 
-        beforeEach(() => {
-            bcryptCompare = jest.fn().mockReturnValue(true);
-            bcrypt.compare = bcryptCompare;
-        });
-
-        describe("erro de credenciais de acesso", () => {
+        describe("erro quando tiver e-mail inválido", () => {
             it("deve lançar exceção de erro por e-mail inválido", async () => {
-                await prismaMock.loja.findUnique.mockResolvedValue(null);
+                prismaMock.loja.findUnique.mockResolvedValue(null);
 
                 const tokensOnError = async () => {
                     await lojaService.entrarLoja(
@@ -83,10 +85,17 @@ describe("service de lojas", () => {
 
                 expect(tokensOnError()).rejects.toThrow("Loja não encontrada");
             });
+        });
+
+        describe("erro quando tiver senha inválida", () => {
+            let compareHash;
+
+            beforeEach(() => {
+                compareHash = jest.spyOn(bcrypt, "compare");
+                compareHash.mockResolvedValue(false);
+            });
 
             it("deve lançar exceção de erro por senha inválida", async () => {
-                bcryptCompare.mockReturnValue(false);
-
                 prismaMock.loja.findUnique.mockResolvedValue({
                     ...lojaData,
                 });
@@ -102,27 +111,28 @@ describe("service de lojas", () => {
             });
         });
 
-        it("deve retornar o token resultante da autenticação", async () => {
-            bcryptCompare.mockReturnValue(true);
+        describe("login com sucesso", () => {
+            let compareHash;
 
-            prismaMock.loja.findUnique.mockResolvedValue({
-                ...lojaData,
+            beforeEach(() => {
+                compareHash = jest.spyOn(bcrypt, "compare");
+                compareHash.mockResolvedValue(true);
+
+                prismaMock.loja.findUnique.mockResolvedValue(lojaData);
             });
 
-            const token = await lojaService.entrarLoja(
-                lojaData.email,
-                lojaData.senha
-            );
+            it("deve retornar o token resultante da autenticação", async () => {
+                const { token } = await lojaService.entrarLoja(
+                    lojaData.email,
+                    lojaData.senha
+                );
 
-            expect(typeof token).toBe("string");
+                expect(typeof token).toBe("string");
+            });
         });
     });
 
     describe("buscar lojas", () => {
-        // Só tá passando na primeira execução
-        // Da segunda execução em diante, o array de lojas aumenta
-        // Eu não consigo rastrear os elementos que compõem o array
-        // Provavelmente meu mock está errado, porque era para o mock simular o retorno
         it("deve retornar lojas cadastradas", async () => {
             prismaMock.loja.findMany.mockResolvedValueOnce([lojaData]);
 
