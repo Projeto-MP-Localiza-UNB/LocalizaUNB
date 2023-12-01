@@ -70,7 +70,10 @@ export default function Login() {
           Cria nova conta
         </Link>
         <span>
-          Você é um vendedor? <button>Clique aqui!</button>
+          Você é um vendedor?{' '}
+          <Link to={'../seller-register'}>
+            <button>Clique aqui!</button>
+          </Link>
         </span>
         <Link to="/" className="back">
           Voltar
