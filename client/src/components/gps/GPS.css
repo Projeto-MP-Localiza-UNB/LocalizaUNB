@@ -1,14 +1,34 @@
+@keyframes show-button {
+  0% {
+    transform: translateY(150%);
+  }
+  75% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .gps-container {
   display: flex;
   flex-direction: column;
-  min-height: 185px;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
 }
 
 .gps-container p {
   margin-bottom: 10px;
   font-family: Inter;
   font-weight: 600;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
 }

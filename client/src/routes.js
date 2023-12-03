@@ -5,6 +5,7 @@ import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import Register from './views/Register/Register';
 import SearchResults from './views/SearchResults/SearchResults';
+import SellerRegister from './views/SellerRegister/SellerRegister';
 
 export const routes = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ export const routes = createBrowserRouter([
       },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
+      { path: 'seller-register', element: <SellerRegister /> },
     ],
   },
 ]);

@@ -9,7 +9,9 @@ function App() {
 
   return (
     <>
-      {!['/login', '/register'].includes(path) ? <Header /> : null}
+      {!['/login', '/register', '/seller-register'].includes(path) ? (
+        <Header />
+      ) : null}
       <Outlet />
     </>
   );
