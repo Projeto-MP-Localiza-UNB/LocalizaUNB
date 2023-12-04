@@ -29,7 +29,7 @@ function conditionalRendering(type, status) {
   }
 }
 
-export default function DragAndDrop({ setData }) {
+export default function DragAndDrop({ setData, label }) {
   const [src, setSrc] = useState(null);
   const [dropFieldDimensions, setDropFieldDimensions] = useState({
     width: null,
@@ -110,7 +110,7 @@ export default function DragAndDrop({ setData }) {
           src={src || conditionalRendering('icon', status)}
           alt="Ícone de upload"
         />
-        <label className="drag-and-drop-label">Imagem da loja</label>
+        <label className="drag-and-drop-label">{label}</label>
         <input
           className="drag-and-drop-input"
           type="file"
