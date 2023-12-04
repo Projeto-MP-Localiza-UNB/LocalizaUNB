@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 
-import GPS from '../../../components/gps/GPS';
+import GPS from '../../../../components/gps/GPS';
 
 import './LocalSelector.css';
-import cross from '../assets/cross.png';
-import GPSService from '../../../components/gps/GPSService';
+import cross from '../../assets/cross.png';
+import GPSService from '../../../../components/gps/GPSService';
 
 export default function LocalSelector({ open, setOpen, setFormData }) {
   const [lastMarker, setLastMarker] = useState(null);
