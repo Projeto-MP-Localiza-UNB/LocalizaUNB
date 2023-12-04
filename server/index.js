@@ -1,6 +1,7 @@
 import express from 'express';
 import lojasRotas from './loja/loja.controll.js';
 import produtoRotas from './produto/produto.controll.js';
+import userRotas from './user/user.controll.js';
 import rotas from './home/home.controll.js';
 
 const app = express();
@@ -10,6 +11,7 @@ app.use((_, res, next) => {
   next();
 });
 app.use(express.json());
+app.use(userRotas)
 app.use(lojasRotas);
 app.use(produtoRotas);
 app.use(rotas);
