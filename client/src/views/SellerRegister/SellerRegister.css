@@ -7,7 +7,7 @@
   width: fit-content;
   position: relative;
   margin: 0 auto;
-  top: 5vh;
+  top: 10vh;
   justify-content: center;
   align-items: center;
 }
@@ -33,9 +33,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(5, 1fr);
-  gap: 30px;
+  gap: 15px;
   margin-bottom: 15px;
   padding: 30px 30px 0 30px;
+  max-width: 75vw;
 }
 
 .seller-register-container form .form-field {
@@ -48,6 +49,7 @@
   border: none;
   transition: box-shadow 0.25s;
   font-size: 24px;
+  width: 100%;
 }
 
 .seller-register-container form input:focus {
@@ -161,15 +163,13 @@ span {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background-color: #c5c5c5;
-  color: #133e79;
-}
-
-.seller-register-container .open-map {
   background-color: #133e79;
   color: white;
+  width: 100%;
+  object-fit: contain;
+  height: 100%;
 }
 
 .seller-register-container .open-map img {
-  width: 40px;
+  height: 30px;
 }

@@ -4,11 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import FormService from '../../services/formService';
 import Error from '../../shared/error/Error';
 import Loading from '../../shared/loading/Loading';
-import LocalSelector from './components/LocalSelector';
+import LocalSelector from './components/LocalSelector/LocalSelector';
 
 import './SellerRegister.css';
 import map from './assets/map.png';
 import ok from './assets/icons8-ok.svg';
+import DragAndDrop from './components/DragAndDrop/DragAndDrop';
 
 export default function SellerRegister() {
   const [formData, setFormData] = useState({
@@ -164,23 +165,34 @@ export default function SellerRegister() {
               message="Máximo de 50 caracteres"
             />
           </div>
-          <button
-            onClick={() => setOpenMap(true)}
-            className={[
-              'open-map',
-              Object.values(formData.local).length ? 'set' : '',
-            ].join(' ')}
-            type="button"
+          <div className="form-field" style={{ gridColumn: '2', gridRow: '2' }}>
+            <button
+              onClick={() => setOpenMap(true)}
+              className={[
+                'open-map',
+                Object.values(formData.local).length ? 'set' : '',
+              ].join(' ')}
+              type="button"
+            >
+              {Object.values(formData.local).length
+                ? 'Local selecionado'
+                : 'Selecionar localização'}
+              <img
+                className="map-icon"
+                src={Object.values(formData.local).length ? ok : map}
+                alt="ícone de mapa"
+              />
+            </button>
+          </div>
+
+          <div
+            className="form-field"
+            style={{ gridColumn: '2', gridRow: '3/5' }}
           >
-            {Object.values(formData.local).length
-              ? 'Local selecionado'
-              : 'Selecionar localização'}
-            <img
-              className="map-icon"
-              src={Object.values(formData.local).length ? ok : map}
-              alt="ícone de mapa"
+            <DragAndDrop
+              setData={(data) => setFormData({ ...formData, image: data })}
             />
-          </button>
+          </div>
           <button style={{ gridColumn: '2', gridRow: '5' }}>Cadastrar</button>
           <Link
             style={{ gridColumn: '1', gridRow: '5' }}
@@ -190,6 +202,7 @@ export default function SellerRegister() {
             Voltar
           </Link>
         </form>
+        {/* {JSON.stringify(formData)} */}
       </div>
     </>
   );
