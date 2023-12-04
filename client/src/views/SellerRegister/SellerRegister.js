@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import FormService from '../../services/formService';
@@ -38,6 +38,12 @@ export default function SellerRegister() {
   const form = useRef();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!openMap && Object.values(formData.local).length) {
+      setHasErrors({ ...hasErrors, local: false });
+    }
+  }, [openMap, formData, hasErrors]);
+
   function handleLogin(e) {
     e.preventDefault();
     const form = e.target;
@@ -48,6 +54,9 @@ export default function SellerRegister() {
       email: !FormService.validateEmail(data.email),
       password: !FormService.validatePassword(data.password),
       repeat: !FormService.validatePassword(data.password, true, data.repeat),
+      storeName: !FormService.validateName(data.storeName),
+      local: !Object.values(formData.local).length,
+      image: !formData.image,
     };
     setHasErrors(errors);
     if (!Object.values(errors).includes(true)) {
@@ -165,14 +174,20 @@ export default function SellerRegister() {
               message="Máximo de 50 caracteres"
             />
           </div>
-          <div className="form-field" style={{ gridColumn: '2', gridRow: '2' }}>
+          <div
+            className="form-field"
+            style={{
+              gridColumn: '2',
+              gridRow: '2',
+            }}
+          >
             <button
               onClick={() => setOpenMap(true)}
-              className={[
-                'open-map',
-                Object.values(formData.local).length ? 'set' : '',
-              ].join(' ')}
+              className="open-map"
               type="button"
+              style={{
+                height: !hasErrors.local ? '100%' : 'calc(100% - 10px)',
+              }}
             >
               {Object.values(formData.local).length
                 ? 'Local selecionado'
@@ -183,14 +198,18 @@ export default function SellerRegister() {
                 alt="ícone de mapa"
               />
             </button>
+            <Error
+              show={hasErrors.local}
+              message="Selecione um local no mapa"
+            />
           </div>
-
           <div
             className="form-field"
             style={{ gridColumn: '2', gridRow: '3/5' }}
           >
             <DragAndDrop
               setData={(data) => setFormData({ ...formData, image: data })}
+              label={'Imagem da loja (opcional)'}
             />
           </div>
           <button style={{ gridColumn: '2', gridRow: '5' }}>Cadastrar</button>
@@ -202,7 +221,6 @@ export default function SellerRegister() {
             Voltar
           </Link>
         </form>
-        {/* {JSON.stringify(formData)} */}
       </div>
     </>
   );

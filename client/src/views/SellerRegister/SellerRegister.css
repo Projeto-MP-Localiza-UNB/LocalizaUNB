@@ -7,7 +7,7 @@
   width: fit-content;
   position: relative;
   margin: 0 auto;
-  top: 10vh;
+  top: 5vh;
   justify-content: center;
   align-items: center;
 }
@@ -33,7 +33,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(5, 1fr);
-  gap: 15px;
+  gap: 35px;
   margin-bottom: 15px;
   padding: 30px 30px 0 30px;
   max-width: 75vw;
@@ -168,6 +168,7 @@ span {
   width: 100%;
   object-fit: contain;
   height: 100%;
+  transition: height 0.25s;
 }
 
 .seller-register-container .open-map img {
