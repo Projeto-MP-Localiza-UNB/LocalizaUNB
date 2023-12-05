@@ -1,39 +1,35 @@
 import './Card.css';
 import { FaStar } from 'react-icons/fa6';
 
-/**
- * Renderiza 3 tipos diferentes de um Card generico.
- * @param {Object} product - product_name, price, meters, review, restaurant_name, img_url
- * @param {Object} restaurant - name, review, meters, img_url.
- * @param {string} renderType - tipo de renderizacao
- */
-const Card = ({ product = null, restaurant = null, renderType }) => {
+const Card = ({ product = null  , restaurant = null, renderType }) => {
+  console.log("Dados no Card:", product);
+
   return (
     <div className="box">
       <img
-        src={null}
+        src={product?.imagem || restaurant?.img_url || null}
         alt={product != null ? 'imagem do produto' : 'imagem do restaurante'}
         className="card-img"
       />
       <div className="content-box">
-        {renderType === 'produto' && (
+        {renderType === 'produto' && product && (
           <>
             <div className="space">
-              <span className="title">{product.product_name}</span>
+              <span className="title">{product.nome}</span>
             </div>
             <div className="space">
-              <span>{`${product.meters}m - R$ ${product.price}`}</span>
+              <span>{`Loja -  ${product.descricao}`}</span>
             </div>
             <div>
               <span className="review">
-                <FaStar size={16} /> {product.review}
+                <FaStar size={16} /> {product.nota}
               </span>
-              <span>{` - ${product.restaurant_name}`}</span>
+              <span>{` - ${product.quantidade_avaliacao}`}</span>
             </div>
           </>
         )}
 
-        {renderType === 'restaurante' && (
+        {renderType === 'restaurante' && restaurant && (
           <>
             <div className="space">
               <span className="title">{restaurant.name}</span>
@@ -47,21 +43,20 @@ const Card = ({ product = null, restaurant = null, renderType }) => {
           </>
         )}
 
-        {renderType === 'produto-restaurante' && (
+        {renderType === 'produto-restaurante' && product && (
           <>
             <div className="space">
-              <span className="title">{product.product_name}</span>
+              <span className="title">{product.nome}</span>
             </div>
             <div>
               <span className="review">
-                <FaStar size={16} /> {product.review}
+                <FaStar size={16} /> {product.avaliacao}
               </span>
-              <span>{` - ${product.meters}m`}</span>
+              <span>{` - ${product.quantidade_avaliacao}m`}</span>
             </div>
           </>
         )}
 
-        {/*para testes, vai ser apagado posteriormente */}
         {renderType === 'teste' && (
           <>
             <div className="space">

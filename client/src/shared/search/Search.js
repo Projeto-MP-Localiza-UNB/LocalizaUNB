@@ -7,6 +7,7 @@ import './Search.css';
 import icon_search from '../../assets/icons/icone-lupa.png';
 import FormService from '../../services/formService';
 
+/*
 const mock = [];
 for (let i = 0; i < 14; i++) {
   mock.push({
@@ -18,7 +19,7 @@ for (let i = 0; i < 14; i++) {
     },
   });
 }
-
+*/
 export function Search({ setter, input, loading }) {
   const [hasErrors, setHasErrors] = useState({ searchInput: null });
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export function Search({ setter, input, loading }) {
       loading(true);
       FormService.get('produto').then((json) => {
         console.log(json);
-        setter(mock);
+        setter(json); 
         input(data.searchInput);
         navigate('/search');
         loading(false);

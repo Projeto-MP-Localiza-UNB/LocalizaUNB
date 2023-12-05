@@ -12,10 +12,13 @@ export default function SearchResults() {
 
   const paginatedResults = useMemo(() => {
     const pages = SearchResultsService.getGridPages(results);
+    console.log("Dados no SearchResults:", results);
     return pages.map((page) =>
       page.map((item) => (
+        
         <li key={item.id}>
-          <Card restaurant={item.store} renderType={'restaurante'} />
+          
+          <Card product={item} renderType={'produto'} />
         </li>
       ))
     );
