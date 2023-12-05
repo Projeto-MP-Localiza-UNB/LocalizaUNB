@@ -22,4 +22,16 @@ produtoRotas.get("/produto", async(enviado,resposta) => {
     resposta.status(200).json(listaProdutos)
 })
 
+produtoRotas.delete("/produto/:idLoja/:idProduto", JwtGuard, async (enviado, resposta) => {
+    const { idLoja, idProduto } = enviado.params;
+    
+    try {
+        const mensagem = await produto.excluirProduto(idLoja, idProduto);
+        resposta.status(200).json({ mensagem: mensagem });
+    } catch (err) {
+        resposta.status(400).json({ erro: err.message });
+    }
+});
+
+
 export default produtoRotas
