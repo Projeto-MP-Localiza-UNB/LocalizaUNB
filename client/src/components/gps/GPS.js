@@ -65,6 +65,8 @@ const GPS = ({
   }, [mapRef, coordenadas, map, marker, updateMarker, userCoordinates]);
 
   useEffect(() => {
+    
+
     if (userCoordinates) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -72,6 +74,7 @@ const GPS = ({
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             setCoordenadas({ lat: latitude, lng: longitude });
+            console.log(latitude, longitude)
           },
           (error) => {
             console.error(error.message);

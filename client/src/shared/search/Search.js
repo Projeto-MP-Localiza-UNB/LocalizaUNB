@@ -35,7 +35,7 @@ export function Search({ setter, input, loading }) {
     setHasErrors(errors);
     if (!Object.values(errors).includes(true)) {
       loading(true);
-      FormService.get('produto').then((json) => {
+      FormService.get('lojas').then((json) => {
         console.log(json);
         setter(json); 
         input(data.searchInput);

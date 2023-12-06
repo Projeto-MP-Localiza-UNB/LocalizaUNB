@@ -12,13 +12,13 @@ const Card = ({ product = null  , restaurant = null, renderType }) => {
         className="card-img"
       />
       <div className="content-box">
-        {renderType === 'produto' && product && (
+        {renderType === 'lojas' && product && (
           <>
             <div className="space">
               <span className="title">{product.nome}</span>
             </div>
             <div className="space">
-              <span>{`Loja -  ${product.descricao}`}</span>
+              <span>{`${product.descricao}-m  `}</span>
             </div>
             <div>
               <span className="review">
