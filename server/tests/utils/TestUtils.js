@@ -20,8 +20,8 @@ function gerarProduto(lojaId) {
         nome: faker.word.noun(5),
         descricao: faker.lorem.sentence(10),
         imagem: faker.image.url(),
-        quantidade_avaliacao: faker.number.int({ min: 0 }),
-        nota: faker.number.int({ min: 0, max: 5 }),
+        quantidade_avaliacao: 0,
+        nota: 5,
         idLoja: lojaId,
     };
 }
