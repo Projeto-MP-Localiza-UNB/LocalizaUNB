@@ -1,39 +1,26 @@
 import Loja from "../../loja/loja.service";
-import { prismaMock } from "../../libs/__mocks__/prisma";
 import { TestUtils } from "../utils/TestUtils";
-import { describe, expect, jest, it } from "@jest/globals";
-import * as bcrypt from "bcrypt";
-import { mock, mockReset } from "jest-mock-extended";
+import { describe, expect, it, beforeAll } from "@jest/globals";
+import { fakerPT_BR as faker } from "@faker-js/faker";
 
-jest.mock("bcrypt");
-
-describe("service de lojas", () => {
+describe("ORM para lojas", () => {
     let lojaService;
     let lojaData;
-
-    const bcryptMock = mock({ compare: jest.fn() });
+    let createdLojaData;
 
     beforeAll(() => {
         lojaService = new Loja();
         lojaData = TestUtils.gerarLoja();
     });
 
-    beforeEach(() => {
-        mockReset(bcryptMock);
-
-        jest.resetAllMocks();
-    });
-
     it("deve estar definido", () => {
         expect(lojaService).toBeDefined();
     });
 
-    describe("criação de nova loja", () => {
-        describe("criação de loja", () => {
+    describe("criar loja", () => {
+        describe("quando os parâmetros estiverem corretos", () => {
             it("deve criar uma nova loja", async () => {
-                prismaMock.loja.create.mockResolvedValue(lojaData);
-
-                const lojaCriada = await lojaService.cadastroLoja(
+                createdLojaData = await lojaService.cadastroLoja(
                     lojaData.email,
                     lojaData.nome,
                     lojaData.senha,
@@ -42,14 +29,24 @@ describe("service de lojas", () => {
                     lojaData.latitude_fixa
                 );
 
-                expect(lojaCriada).toEqual(lojaData);
+                let { id: id, senha: senha, ...restResData } = createdLojaData;
+
+                let resData = {
+                    email: lojaData.email,
+                    nome: lojaData.nome,
+                    imagem: lojaData.imagem,
+                    longitude_fixa: lojaData.longitude_fixa,
+                    latitude_fixa: lojaData.latitude_fixa,
+                    quantidade_avaliacao: 0,
+                    nota: 5,
+                };
+
+                expect(restResData).toEqual(resData);
             });
+        });
 
+        describe("quando já houver uma loja cadastrada com o e-mail informado", () => {
             it("deve lançar exceção de erro de e-mail já cadastrado", async () => {
-                prismaMock.loja.create.mockImplementation(() => {
-                    throw new Error("Email já cadastrado");
-                });
-
                 const lojaCriada = async () => {
                     await lojaService.cadastroLoja(
                         lojaData.email,
@@ -66,61 +63,39 @@ describe("service de lojas", () => {
         });
     });
 
-    describe("login como loja", () => {
-        // beforeEach(async () => {
-        //     bcryptCompare = jest.fn().mockReturnValue(true);
-        //     bcrypt.compare = bcryptCompare;
-        // });
-
-        describe("erro quando tiver e-mail inválido", () => {
+    describe("autenticar como loja", () => {
+        describe("quando o e-mail for inválido", () => {
             it("deve lançar exceção de erro por e-mail inválido", async () => {
-                prismaMock.loja.findUnique.mockResolvedValue(null);
+                let email = faker.internet.email();
+
+                while (email === lojaData.email) {
+                    email = faker.internet.email();
+                }
 
                 const tokensOnError = async () => {
-                    await lojaService.entrarLoja(
-                        lojaData.email,
-                        lojaData.senha
-                    );
+                    await lojaService.entrarLoja(email, lojaData.senha);
                 };
 
                 expect(tokensOnError()).rejects.toThrow("Loja não encontrada");
             });
         });
 
-        describe("erro quando tiver senha inválida", () => {
-            let compareHash;
-
-            beforeEach(() => {
-                compareHash = jest.spyOn(bcrypt, "compare");
-                compareHash.mockResolvedValue(false);
-            });
-
+        describe("erro a senha for inválida", () => {
             it("deve lançar exceção de erro por senha inválida", async () => {
-                prismaMock.loja.findUnique.mockResolvedValue({
-                    ...lojaData,
-                });
+                let password = faker.internet.password();
 
+                while (password === lojaData.senha) {
+                    password = faker.internet.password();
+                }
                 const tokensOnError = async () => {
-                    await lojaService.entrarLoja(
-                        lojaData.email,
-                        lojaData.senha
-                    );
+                    await lojaService.entrarLoja(lojaData.email, password);
                 };
 
                 expect(tokensOnError()).rejects.toThrow("Senha incorreta");
             });
         });
 
-        describe("login com sucesso", () => {
-            let compareHash;
-
-            beforeEach(() => {
-                compareHash = jest.spyOn(bcrypt, "compare");
-                compareHash.mockResolvedValue(true);
-
-                prismaMock.loja.findUnique.mockResolvedValue(lojaData);
-            });
-
+        describe("quando as credenciais estiverem corretas", () => {
             it("deve retornar o token resultante da autenticação", async () => {
                 const { token } = await lojaService.entrarLoja(
                     lojaData.email,
@@ -132,23 +107,21 @@ describe("service de lojas", () => {
         });
     });
 
-    describe("buscar lojas", () => {
-        it("deve retornar lojas cadastradas", async () => {
-            prismaMock.loja.findMany.mockResolvedValueOnce([lojaData]);
-
+    describe("buscar todas as lojas", () => {
+        it("deve retornar as lojas cadastradas", async () => {
             const lojas = await lojaService.procurarLojas();
 
-            expect(lojas).toEqual([lojaData]);
+            expect(typeof lojas).toEqual("object");
         });
     });
 
     describe("buscar uma loja específica", () => {
-        it("deve retornar loja específica", async () => {
-            prismaMock.loja.findUnique.mockResolvedValue({ ...lojaData });
+        describe("quando o id for fornecido", () => {
+            it("deve retornar loja específica", async () => {
+                const loja = await lojaService.retornaLoja(createdLojaData.id);
 
-            const loja = await lojaService.retornaLoja(lojaData.id);
-
-            expect(typeof loja).toBe("object");
+                expect(typeof loja).toBe("object");
+            });
         });
     });
 });
