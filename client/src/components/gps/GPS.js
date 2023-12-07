@@ -4,6 +4,7 @@ import Loading from '../../shared/loading/Loading';
 
 import './GPS.css';
 import GPSService from './GPSService';
+import { calculaDistancia } from './calculoDist';
 
 const UNBcoordinates = { lat: -15.766097, lng: -47.870604 };
 
@@ -20,6 +21,10 @@ const GPS = ({
   const [map, setMap] = useState(null);
   const mapRef = useRef();
 
+  
+  
+
+  
   const updateMarker = useCallback(
     (m) =>
       setMarker((marker) => {
@@ -65,8 +70,6 @@ const GPS = ({
   }, [mapRef, coordenadas, map, marker, updateMarker, userCoordinates]);
 
   useEffect(() => {
-    
-
     if (userCoordinates) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -74,7 +77,13 @@ const GPS = ({
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             setCoordenadas({ lat: latitude, lng: longitude });
-            console.log(latitude, longitude)
+            console.log(`Usuario Dist: ${latitude}, ${longitude}`);
+
+          
+            // Exemplo de chamada da função para calcular a distância
+
+            const lojaCoordinates = { lat: -15.766097, lng: -47.870604}; // Coordenadas fictícias da loja
+            calculaDistancia({ lat: latitude, lng: longitude }, lojaCoordinates);
           },
           (error) => {
             console.error(error.message);
@@ -96,8 +105,7 @@ const GPS = ({
         // Trate a falta de suporte à geolocalização aqui.
       }
     }
-  }, []);
-
+  }, [userCoordinates]);
   return (
     <>
       <div className="gps-container">

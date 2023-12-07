@@ -1,7 +1,9 @@
 import './Card.css';
 import { FaStar } from 'react-icons/fa6';
 
-const Card = ({ product = null  , restaurant = null, renderType }) => {
+import { calculateDistance } from '../../../../components/gps/calculoDist';
+
+const Card = ({ product = null  , restaurant = null, renderType}) => {
   console.log("Dados no Card:", product);
 
   return (
@@ -18,7 +20,7 @@ const Card = ({ product = null  , restaurant = null, renderType }) => {
               <span className="title">{product.nome}</span>
             </div>
             <div className="space">
-              <span>{`${product.descricao}-m  `}</span>
+              <span>{`Distancia-km  `}</span>
             </div>
             <div>
               <span className="review">
