@@ -3,3 +3,5 @@ node_modules
 .env
 .prettierrc
 .vscode
+prisma/*.db
+prisma/*.db-journal
