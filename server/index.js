@@ -8,6 +8,7 @@ import path from 'path';
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import bodyParser from 'body-parser';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,9 +21,13 @@ app.use((_, res, next) => {
   res.setHeader('Accept', 'application/json');
   next();
 });
+
+// Change body parses size limit
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
-app.use(userRotas)
+app.use(userRotas);
 app.use(lojasRotas);
 app.use(produtoRotas);
 app.use(pesquisaRotas);
