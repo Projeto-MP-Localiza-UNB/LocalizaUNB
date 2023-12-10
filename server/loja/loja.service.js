@@ -27,7 +27,6 @@ class Loja {
     latitude_fixa,
     imagem = ''
   ) {
-    console.log(imagem);
     const salt = await bcrypt.genSalt();
     senha = await bcrypt.hash(senha, salt);
     return await prisma.loja
