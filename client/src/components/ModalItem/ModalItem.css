@@ -33,3 +33,13 @@ content {
   width: 90%;
   text-align: justify;
 }
+
+.contato {
+  color: black;
+  text-decoration: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}

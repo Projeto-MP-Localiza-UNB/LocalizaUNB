@@ -1,8 +1,10 @@
 import React from 'react';
-import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
-import "./ModalItem.css"
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import './ModalItem.css'
 import { FaStar } from 'react-icons/fa6';
+import { IoMailOpenOutline } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 /**
  * Componente do item modal usado para exibir detalhes de um produto ou de uma loja em um modal.
@@ -26,15 +28,22 @@ const ModalItem = ({ product = null, open, onCloseModal}) => {
       <img
         src={product.img}
         alt={'imagem do produto'}
-        className="produto-img"
+        className='produto-img'
       />
         <h1>{product.nome}</h1>
-        <span className="review">
+        <span className='review'>
           <FaStar size={16} /> {product.nota}
         </span>
         <p>
           {product.descricao}
         </p>
+        <div>
+        
+        <Link className='contato' to='#' onClick={(e) => {
+                window.location.href = 'mailto:' + product.email;
+                e.preventDefault();
+            }}> <IoMailOpenOutline size={16}/> Entre em contato com a loja </Link>
+            </div>
       </Modal>
     </div>
   );

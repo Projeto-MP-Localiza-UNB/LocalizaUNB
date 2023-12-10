@@ -6,7 +6,7 @@ import { useMemo, useState } from 'react';
 import SearchResultsService from './services/searchResultsService';
 import Card from './components/Card/Card';
 
-import ModalItem from '../../components/ModalProduto/ModalItem';
+import ModalItem from '../../components/ModalItem/ModalItem';
 
 export default function SearchResults() {
   const [results, setResults, input, setInput, setLoading] = useOutletContext();
