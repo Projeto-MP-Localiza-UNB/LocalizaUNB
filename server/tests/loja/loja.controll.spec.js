@@ -55,7 +55,7 @@ describe("rotas para lojas", () => {
         describe("quando as credenciais estiverem corretas", () => {
             it("deve retornar código HTTP 200 ", async () => {
                 await request(app)
-                    .post("/entrar")
+                    .post("/entrarLoja")
                     .send({
                         email: lojaOnCreateReqData.email,
                         senha: lojaOnCreateReqData.senha,
@@ -73,7 +73,7 @@ describe("rotas para lojas", () => {
                 }
 
                 await request(app)
-                    .post("/cadastrarLoja")
+                    .post("/entrarLoja")
                     .send({ email: lojaOnCreateReqData.email, senha: password })
                     .expect(400);
             });
