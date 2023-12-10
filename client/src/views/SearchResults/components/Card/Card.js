@@ -1,10 +1,12 @@
 import './Card.css';
 import { FaStar } from 'react-icons/fa6';
 
-import { calculateDistance } from '../../../../components/gps/calculoDist';
+import { calculaDistancia } from '../../../../components/gps/calculoDist';
 
 const Card = ({ product = null  , restaurant = null, renderType}) => {
   console.log("Dados no Card:", product);
+  const latitude = sessionStorage.getItem("userLatitude");
+  const longitude = sessionStorage.getItem("userLongitude");
 
   return (
     <div className="box">
@@ -20,7 +22,11 @@ const Card = ({ product = null  , restaurant = null, renderType}) => {
               <span className="title">{product.nome}</span>
             </div>
             <div className="space">
-              <span>{`Distancia-km  `}</span>
+              <span>{calculaDistancia(
+                { lat: latitude, lng: longitude },
+                { lat: product.longitude_fixa, lng: product.latitude_fixa })}
+                km
+              </span>
             </div>
             <div>
               <span className="review">
