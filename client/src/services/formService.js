@@ -54,8 +54,8 @@ export default class FormService {
    * @param {string} params
    * @returns {Promise} Resposta em formato JSON
    */
-  static async get(resource, params = '') {
-    const url = `${this.apiURL}/${resource}/${params}`;
+  static async get(resource, query = '') {
+    const url = `${this.apiURL}/${resource}${query ? `?q=${query}` : ''}`;
     const res = await fetch(url);
     const json = { status: res.status, data: await res.json() };
     return json;
@@ -68,8 +68,7 @@ export default class FormService {
    * @param {JSON} body
    * @returns {Promise} Resposta em formato JSON
    */
-  static async post(resource, body, params = '') {
-    console.log(body);
+  static async post(resource, body = null, params = '') {
     const url = `${this.apiURL}/${resource}/${params}`;
     const res = await fetch(url, {
       method: 'POST',

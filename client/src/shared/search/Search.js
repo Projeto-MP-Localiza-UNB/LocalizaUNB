@@ -7,19 +7,6 @@ import './Search.css';
 import icon_search from '../../assets/icons/icone-lupa.png';
 import FormService from '../../services/formService';
 
-/*
-const mock = [];
-for (let i = 0; i < 14; i++) {
-  mock.push({
-    id: i + 1,
-    store: {
-      name: `LOJA ${i}`,
-      review: (Math.random() * 5).toFixed(1),
-      meters: (Math.random() * 100).toFixed(2),
-    },
-  });
-}
-*/
 export function Search({ setter, input, loading }) {
   const [hasErrors, setHasErrors] = useState({ searchInput: null });
   const navigate = useNavigate();
@@ -35,8 +22,7 @@ export function Search({ setter, input, loading }) {
     setHasErrors(errors);
     if (!Object.values(errors).includes(true)) {
       loading(true);
-      FormService.get('lojas').then((json) => {
-        console.log(json);
+      FormService.get('pesquisa', data.searchInput).then((json) => {
         setter(json.data);
         input(data.searchInput);
         navigate('/search');
