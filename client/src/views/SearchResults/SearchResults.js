@@ -28,7 +28,7 @@ export default function SearchResults() {
         
         <li key={item.id} onClick={ () => {setProdut(item); setOpen(true)}}>
           
-          <Card product={item} renderType={'lojas' }/>
+          <Card restaurant={item} renderType={'lojas' }/>
 
         </li>
       ))
