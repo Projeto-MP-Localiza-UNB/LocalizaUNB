@@ -17,9 +17,9 @@ lojasRotas.post('/cadastrarLoja', async (enviado, resposta) => {
       email,
       nome,
       senha,
-      imagem,
       longitude_fixa,
-      latitude_fixa
+      latitude_fixa,
+      imagem
     );
     resposta.status(200).json(novaLoja);
   } catch (e) {

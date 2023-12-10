@@ -89,7 +89,9 @@ export default function SellerRegister() {
                 message: 'Cadastro realizado com sucesso! :)',
                 type: 'success',
               });
-              setTimeout(navigate('/'), 3000);
+              setTimeout(() => {
+                navigate('/');
+              }, 4000);
               break;
             case 400:
               setNotification(() => {
