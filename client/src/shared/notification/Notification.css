@@ -1,0 +1,46 @@
+@keyframes show {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.notification-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  backdrop-filter: blur(1px);
+  align-items: center;
+  justify-content: center;
+}
+
+.notification {
+  width: fit-content;
+  text-align: center;
+  padding: 20px 40px;
+  border-radius: 50px;
+  animation: show 0.25s ease-out;
+}
+
+.notification.success {
+  background-color: #008940;
+}
+
+.notification.error {
+  background-color: #cf3a1b;
+}
+
+.notification p {
+  font-size: 24px;
+  font-family: Inter;
+  color: white;
+}

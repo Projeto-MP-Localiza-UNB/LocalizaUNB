@@ -30,10 +30,10 @@ export const conversaoCoord = (coord1, coord2) => {
     
   };
   
-export const calculaDistancia= (userCoordinates, lojaCoordinates) => {
+export const calculaDistancia = (userCoordinates, lojaCoordinates) => {
     if (userCoordinates && lojaCoordinates) {
       const distance = conversaoCoord(userCoordinates, lojaCoordinates);
-      console.log(`Distância até a UNB: ${distance.toFixed(2)} km`);
 
+      return distance.toFixed(2);
     }
   };
