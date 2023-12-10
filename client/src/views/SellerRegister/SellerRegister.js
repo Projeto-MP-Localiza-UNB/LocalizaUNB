@@ -19,6 +19,7 @@ export default function SellerRegister() {
     password: '',
     repeat: '',
     local: {},
+    storeName: '',
     storeImage: '',
   });
   const [hasErrors, setHasErrors] = useState({
@@ -65,45 +66,83 @@ export default function SellerRegister() {
       ),
       storeName: !FormService.validateName(formData.storeName),
       local: !Object.values(formData.local).length,
-      storeImage: !formData.storeImage,
     };
     setHasErrors(errors);
     if (!Object.values(errors).includes(true)) {
       setLoading(true);
-      FormService.post(
-        'cadastrarLoja',
-        JSON.stringify(formData, (k, v) => (k === 'repeat' ? undefined : v))
-      ).then((res) => {
-        setLoading(false);
-        switch (res.status) {
-          case 200:
-            setNotification({
-              show: true,
-              message: 'Cadastro realizado com sucesso! :)',
-              type: 'success',
-            });
-            setTimeout(navigate('/'), 3000);
-            break;
-          case 400:
-            setNotification(() => {
-              return {
+      const data = {
+        nome: formData.storeName,
+        email: formData.email,
+        senha: formData.password,
+        imagem: formData.storeImage,
+        longitude_fixa: formData.local.lat,
+        latitude_fixa: formData.local.lng,
+      };
+
+      try {
+        FormService.post('cadastrarLoja', JSON.stringify(data)).then((res) => {
+          setLoading(false);
+          switch (res.status) {
+            case 200:
+              setNotification({
                 show: true,
-                message: 'Erro no cadastro, tente novamente mais tarde! :(',
-                type: 'error',
-              };
-            });
-            setTimeout(
-              () =>
-                setNotification((obj) => {
-                  return { ...obj, show: false };
-                }),
-              3000
-            );
-            break;
-          default:
-            return;
-        }
-      });
+                message: 'Cadastro realizado com sucesso! :)',
+                type: 'success',
+              });
+              setTimeout(navigate('/'), 3000);
+              break;
+            case 400:
+              setNotification(() => {
+                return {
+                  show: true,
+                  message: 'Erro no cadastro, tente novamente mais tarde! :(',
+                  type: 'error',
+                };
+              });
+              setTimeout(
+                () =>
+                  setNotification((obj) => {
+                    return { ...obj, show: false };
+                  }),
+                3000
+              );
+              break;
+            default:
+              setNotification(() => {
+                return {
+                  show: true,
+                  message: 'Erro no cadastro, tente novamente mais tarde! :(',
+                  type: 'error',
+                };
+              });
+              setTimeout(
+                () =>
+                  setNotification((obj) => {
+                    return { ...obj, show: false };
+                  }),
+                3000
+              );
+              return;
+          }
+        });
+      } catch (e) {
+        setNotification(() => {
+          return {
+            show: true,
+            message:
+              'Erro no cadastro, tente novamente mais tarde! :(' +
+              `\n Erro: ${e}`,
+            type: 'error',
+          };
+        });
+        setTimeout(
+          () =>
+            setNotification((obj) => {
+              return { ...obj, show: false };
+            }),
+          3000
+        );
+      }
     }
   }
   return (

@@ -119,7 +119,7 @@ export default function DragAndDrop({ setData, label, name }) {
           accept="image/*"
           onChange={(e) => {
             e.preventDefault();
-            if (e.target.files.length) reader.readAsDataURL(e.target?.files[0]);
+            if (e.target?.files.length) reader.readAsDataURL(e.target.files[0]);
           }}
         />
       </div>
