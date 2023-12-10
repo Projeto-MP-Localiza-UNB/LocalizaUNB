@@ -22,7 +22,6 @@ export default function SearchResults() {
   const paginatedResults = useMemo(() => {
     const pages = SearchResultsService.getGridPages(results);
 
-    console.log('Dados no SearchResults:', results, pages);
     return pages.map((page) =>
       page.map((item) => (
         <li
