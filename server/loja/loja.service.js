@@ -77,7 +77,7 @@ class Loja {
      */
     async retornaLoja(id) {
         try {
-            const loja = await prisma.usuario.findUnique({
+            const loja = await prisma.loja.findUnique({
                 where: { id },
                 select: {
                     imagem: true,
