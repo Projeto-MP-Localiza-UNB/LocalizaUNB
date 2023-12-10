@@ -6,7 +6,7 @@ import { useMemo, useState } from 'react';
 import SearchResultsService from './services/searchResultsService';
 import Card from './components/Card/Card';
 
-import ModalProduto from '../../components/ModalProduto/ModalProduto';
+import ModalItem from '../../components/ModalProduto/ModalItem';
 
 export default function SearchResults() {
   const [results, setResults, input, setInput, setLoading] = useOutletContext();
@@ -37,7 +37,7 @@ export default function SearchResults() {
 
   return (
     <div className="search-results">
-      <ModalProduto product={produt} open={open} onCloseModal={ () => {setOpen(false)} } />
+      <ModalItem product={produt} open={open} onCloseModal={ () => {setOpen(false)} } />
       <Filter
         f={setResults}
         searchInput={input}

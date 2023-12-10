@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import "./ModalProduto.css"
+import "./ModalItem.css"
 import { FaStar } from 'react-icons/fa6';
 
-const ModalProduto = ({ product = null, open, onCloseModal}) => {
+/**
+ * Componente do item modal usado para exibir detalhes de um produto ou de uma loja em um modal.
+ * @param {Object} product Objeto representando os detalhes do produto/loja a ser exibido no modal
+ * @param {boolean} open Indica se o modal está aberto ou fechado
+ * @param {function} onCloseModal Função para fechar o modal
+ * @returns
+*/
+
+const ModalItem = ({ product = null, open, onCloseModal}) => {
   return (
     <div>
       <Modal 
@@ -32,4 +40,4 @@ const ModalProduto = ({ product = null, open, onCloseModal}) => {
   );
 }
 
-export default ModalProduto;
+export default ModalItem;
