@@ -25,7 +25,7 @@ class Loja {
     senha,
     longitude_fixa,
     latitude_fixa,
-    imagem = ''
+    imagem = null
   ) {
     const salt = await bcrypt.genSalt();
     senha = await bcrypt.hash(senha, salt);
