@@ -11,15 +11,16 @@ const Card = ({ product = null  , restaurant = null, renderType}) => {
   return (
     <div className="box">
       <img
-        src={product?.imagem || restaurant?.img_url || null}
-        alt={product != null ? 'imagem do produto' : 'imagem do restaurante'}
+        src={`http://localhost:5000${restaurant?.imagem || product?.img_url || null}`}
+
+        alt={restaurant != null ? 'imagem do restaurante' : 'imagem do produto'}
         className="card-img"
       />
       <div className="content-box">
-        {renderType === 'lojas' && product && (
+        {renderType === 'lojas' && restaurant && (
           <>
             <div className="space">
-              <span className="title">{product.nome}</span>
+              <span className="title">{restaurant.nome}</span>
             </div>
             <div className="space">
               <span>{calculaDistancia(
@@ -30,9 +31,9 @@ const Card = ({ product = null  , restaurant = null, renderType}) => {
             </div>
             <div>
               <span className="review">
-                <FaStar size={16} /> {product.nota}
+                <FaStar size={16} /> {restaurant.nota}
               </span>
-              <span>{` - ${product.quantidade_avaliacao}`}</span>
+              <span>{` - ${restaurant.quantidade_avaliacao}`}</span>
             </div>
           </>
         )}
