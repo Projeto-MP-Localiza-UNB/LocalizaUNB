@@ -7,7 +7,6 @@ const prisma = new PrismaClient();
 /**
  * Classe que representa uma Loja com métodos para cadastro, entrada, busca e retorno de lojas.
  */
-
 class Loja {
   /**
    * @description Cadastra uma nova loja no banco de dados.
