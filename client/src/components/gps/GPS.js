@@ -77,6 +77,9 @@ const GPS = ({
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             setCoordenadas({ lat: latitude, lng: longitude });
+
+            sessionStorage.setItem("userLatitude", latitude );
+            sessionStorage.setItem("userLongitude", longitude );
             console.log(`Usuario Dist: ${latitude}, ${longitude}`);
 
           

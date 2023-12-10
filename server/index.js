@@ -16,6 +16,8 @@ const app = express();
 // Add header to fix CORS error in front-end requests
 app.use((_, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Accept', 'application/json');
   next();
 });
 app.use(express.json());
@@ -23,7 +25,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(userRotas)
 app.use(lojasRotas);
 app.use(produtoRotas);
-app.use(pesquisaRotas)
+app.use(pesquisaRotas);
 app.use(rotas);
 app.listen(5000, () => {
   console.log('Servidor rodando na porta 5000');
