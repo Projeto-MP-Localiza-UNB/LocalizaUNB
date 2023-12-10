@@ -11,7 +11,7 @@ import ModalItem from '../../components/ModalItem/ModalItem';
 export default function SearchResults() {
   const [results, setResults, input, setInput, setLoading] = useOutletContext();
   const [open, setOpen] = useState(false);
-  const [produt, setProdut] = useState({
+  const [product, setProduct] = useState({
     nome: '',
     descricao: '',
     imagem: '',
@@ -28,7 +28,7 @@ export default function SearchResults() {
         <li
           key={item.id}
           onClick={() => {
-            setProdut(item);
+            setProduct(item);
             setOpen(true);
           }}
         >
@@ -41,14 +41,14 @@ export default function SearchResults() {
   return (
     <div className="search-results">
       <ModalItem
-        product={produt}
+        product={product}
         open={open}
         onCloseModal={() => {
           setOpen(false);
         }}
       />
       <Filter
-        f={setResults}
+        setResults={setResults}
         searchInput={input}
         setInput={setInput}
         setLoading={setLoading}
