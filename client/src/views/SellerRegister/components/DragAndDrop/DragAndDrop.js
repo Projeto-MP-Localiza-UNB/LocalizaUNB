@@ -29,7 +29,7 @@ function conditionalRendering(type, status) {
   }
 }
 
-export default function DragAndDrop({ setData, label }) {
+export default function DragAndDrop({ setData, label, name }) {
   const [src, setSrc] = useState(null);
   const [dropFieldDimensions, setDropFieldDimensions] = useState({
     width: null,
@@ -115,11 +115,11 @@ export default function DragAndDrop({ setData, label }) {
           className="drag-and-drop-input"
           type="file"
           id="store-image"
-          name="store-image"
+          name={name}
           accept="image/*"
           onChange={(e) => {
             e.preventDefault();
-            if (e.target.files.length) reader.readAsDataURL(e.target?.files[0]);
+            if (e.target?.files.length) reader.readAsDataURL(e.target.files[0]);
           }}
         />
       </div>

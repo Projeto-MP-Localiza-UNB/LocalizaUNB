@@ -1,32 +1,39 @@
 import './Card.css';
 import { FaStar } from 'react-icons/fa6';
 
-import { calculateDistance } from '../../../../components/gps/calculoDist';
+import { calculaDistancia } from '../../../../components/gps/calculoDist';
 
 const Card = ({ product = null  , restaurant = null, renderType}) => {
   console.log("Dados no Card:", product);
+  const latitude = sessionStorage.getItem("userLatitude");
+  const longitude = sessionStorage.getItem("userLongitude");
 
   return (
     <div className="box">
       <img
-        src={product?.imagem || restaurant?.img_url || null}
-        alt={product != null ? 'imagem do produto' : 'imagem do restaurante'}
+        src={`http://localhost:5000${restaurant?.imagem || product?.img_url || null}`}
+
+        alt={restaurant != null ? 'imagem do restaurante' : 'imagem do produto'}
         className="card-img"
       />
       <div className="content-box">
-        {renderType === 'lojas' && product && (
+        {renderType === 'lojas' && restaurant && (
           <>
             <div className="space">
-              <span className="title">{product.nome}</span>
+              <span className="title">{restaurant.nome}</span>
             </div>
             <div className="space">
-              <span>{`Distancia-km  `}</span>
+              <span>{calculaDistancia(
+                { lat: latitude, lng: longitude },
+                { lat: product.longitude_fixa, lng: product.latitude_fixa })}
+                km
+              </span>
             </div>
             <div>
               <span className="review">
-                <FaStar size={16} /> {product.nota}
+                <FaStar size={16} /> {restaurant.nota}
               </span>
-              <span>{` - ${product.quantidade_avaliacao}`}</span>
+              <span>{` - ${restaurant.quantidade_avaliacao}`}</span>
             </div>
           </>
         )}

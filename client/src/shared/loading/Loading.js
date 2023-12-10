@@ -27,7 +27,7 @@ export default function Loading({
               <div></div>
             </div>
           </div>
-          <p>{message}</p>
+          <p style={{ display: message ? 'initial' : 'none' }}>{message}</p>
         </div>
       ) : (
         <></>
