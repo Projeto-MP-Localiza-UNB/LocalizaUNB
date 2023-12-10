@@ -60,4 +60,18 @@ export default class FormService {
     const json = await res.json();
     return json;
   }
+
+  /**
+   * Método para requisições POST à API do projeto.
+   * @param {string} resource
+   * @param {string} params
+   * @param {JSON} body
+   * @returns {Promise} Resposta em formato JSON
+   */
+  static async post(resource, body, params = '') {
+    const url = `${this.apiURL}/${resource}/${params}`;
+    const res = await fetch(url, { method: 'POST', body: body });
+    const json = await res.json();
+    return json;
+  }
 }

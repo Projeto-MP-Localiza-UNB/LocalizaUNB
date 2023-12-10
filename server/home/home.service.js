@@ -2,7 +2,16 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+/**
+ * Classe que manipula a atualização da localização de um usuário.
+ */
 class Localizacao {
+  /**
+   * Atualiza a localização inicial do usuário no banco de dados.
+   * @param {Object} req - O objeto de requisição contendo os dados do usuário.
+   * @param {Object} res - O objeto de resposta para retornar dados atualizados.
+   * @returns {Promise<void>} Promessa vazia.
+   */
   async atualizarLocalizacaoInicio(req, res) {
     const { userId } = req.body;
 
@@ -27,3 +36,4 @@ class Localizacao {
 }
 
 export default Localizacao;
+
