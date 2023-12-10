@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <>
       <main>
-        <Loading status={loading} />
+        <Loading status={loading} fitContainer={true} />
         {location.pathname === '/' ? (
           <div className="main_container">
             <h1>Encontre no Localiza UnB</h1>

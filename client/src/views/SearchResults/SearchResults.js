@@ -12,24 +12,27 @@ export default function SearchResults() {
   const [results, setResults, input, setInput, setLoading] = useOutletContext();
   const [open, setOpen] = useState(false);
   const [produt, setProdut] = useState({
-    "nome": "",
-    "descricao": "",
-    "imagem": "",
-    "quantidade_avaliacao": 0,
-    "nota": 0,
-    });
-        
+    nome: '',
+    descricao: '',
+    imagem: '',
+    quantidade_avaliacao: 0,
+    nota: 0,
+  });
+
   const paginatedResults = useMemo(() => {
     const pages = SearchResultsService.getGridPages(results);
 
-    console.log("Dados no SearchResults:", results);
+    console.log('Dados no SearchResults:', results, pages);
     return pages.map((page) =>
       page.map((item) => (
-        
-        <li key={item.id} onClick={ () => {setProdut(item); setOpen(true)}}>
-          
-          <Card restaurant={item} renderType={'lojas' }/>
-
+        <li
+          key={item.id}
+          onClick={() => {
+            setProdut(item);
+            setOpen(true);
+          }}
+        >
+          <Card product={item} restaurant={item} renderType={'lojas'} />
         </li>
       ))
     );
@@ -37,7 +40,13 @@ export default function SearchResults() {
 
   return (
     <div className="search-results">
-      <ModalItem product={produt} open={open} onCloseModal={ () => {setOpen(false)} } />
+      <ModalItem
+        product={produt}
+        open={open}
+        onCloseModal={() => {
+          setOpen(false);
+        }}
+      />
       <Filter
         f={setResults}
         searchInput={input}

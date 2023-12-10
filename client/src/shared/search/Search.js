@@ -37,7 +37,7 @@ export function Search({ setter, input, loading }) {
       loading(true);
       FormService.get('lojas').then((json) => {
         console.log(json);
-        setter(json); 
+        setter(json.data);
         input(data.searchInput);
         navigate('/search');
         loading(false);
