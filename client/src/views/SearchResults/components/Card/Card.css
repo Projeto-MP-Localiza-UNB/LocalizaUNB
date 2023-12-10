@@ -10,7 +10,7 @@
 
 .card-img {
   margin: 1.87rem 1.06rem 1.87rem 1.56rem;
-  width: min(120px, 50%);
+  width: min(120px, 50%); max-width: 120px; max-height: 120px;
   height: 75%;
   border-radius: 0.9375rem;
   background: #d9d9d9;

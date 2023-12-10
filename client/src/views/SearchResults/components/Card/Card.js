@@ -1,7 +1,6 @@
 import './Card.css';
 import { FaStar } from 'react-icons/fa6';
 
-import { calculateDistance } from '../../../../components/gps/calculoDist';
 
 const Card = ({ product = null  , restaurant = null, renderType}) => {
   console.log("Dados no Card:", product);
@@ -9,7 +8,8 @@ const Card = ({ product = null  , restaurant = null, renderType}) => {
   return (
     <div className="box">
       <img
-        src={product?.imagem || restaurant?.img_url || null}
+        src={`http://localhost:5000${product?.imagem || restaurant?.img_url || null}`}
+
         alt={product != null ? 'imagem do produto' : 'imagem do restaurante'}
         className="card-img"
       />
