@@ -33,25 +33,26 @@
 }
 
 .voltar-home {
-    color: #fff;
-    text-align: center;
-    font-family: Inter;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    color: white;
-    background-color: #133e79;
-    text-decoration: none;
-    padding: 10px 30px;
-    width: 100%;
-    margin: 0 auto;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: white;
+  background-color: #133e79;
+  text-decoration: none;
+  padding: 10px 30px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s;
 }
 
 .voltar-home:hover {
-    transform: scale3d(1.05, 1.05, 1.05);
+  transform: scale3d(1.05, 1.05, 1.05);
 }
