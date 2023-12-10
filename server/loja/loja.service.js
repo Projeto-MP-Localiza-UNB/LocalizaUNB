@@ -2,8 +2,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import prisma from "../libs/prisma.js";
 
-const prisma = new PrismaClient();
-
 /**
  * Classe que representa uma Loja com métodos para cadastro, entrada, busca e retorno de lojas.
  */

@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../libs/prisma";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
-const prisma = new PrismaClient();
 
 /**
  * Classe que representa um usuário com métodos para criação e entrada de usuário.
@@ -18,17 +16,19 @@ class User {
      */
     async criarUsuario(nome, email, senha) {
         const salt = await bcrypt.genSalt();
-        senha = await bcrypt.hash(senha, salt); 
-        return await prisma.usuario.create({
-            data: {
-                nome,
-                email,
-                senha,
-            }
-        }).catch(e => {
-            if (e.code == "P2002") throw new Error("Email já cadastrado");
-            throw e;
-        });
+        senha = await bcrypt.hash(senha, salt);
+        return await prisma.usuario
+            .create({
+                data: {
+                    nome,
+                    email,
+                    senha,
+                },
+            })
+            .catch((e) => {
+                if (e.code == "P2002") throw new Error("Email já cadastrado");
+                throw e;
+            });
     }
 
     /**
@@ -41,7 +41,8 @@ class User {
     async entrar(email, senha) {
         const user = await prisma.usuario.findUnique({ where: { email } });
         if (!user) throw new Error("Usuário não encontrado");
-        if (!(await bcrypt.compare(senha, user.senha))) throw new Error("Senha incorreta");
+        if (!(await bcrypt.compare(senha, user.senha)))
+            throw new Error("Senha incorreta");
         const token = jwt.sign({ id: user.id }, "secret", { expiresIn: "60m" });
         return { token };
     }

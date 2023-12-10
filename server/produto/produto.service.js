@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../libs/prisma";
 
 /**
  * Classe que lida com operações relacionadas a produtos no banco de dados.

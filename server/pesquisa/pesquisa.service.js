@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../libs/prisma";
 
 /**
  * Busca lojas com base no filtro fornecido.
@@ -11,30 +9,31 @@ const prisma = new PrismaClient();
  * @throws {Error} - Se ocorrer algum erro durante a busca.
  */
 const findBy = async (filter) => {
-  try {
-    const result = await prisma.loja.findMany({
-      where: {
-        OR: [
-          { nome: { contains: filter.q.toLowerCase() } },
-          {
-            produtos: {
-              some: { nome: { contains: filter.q.toLowerCase() } },
+    try {
+        const result = await prisma.loja.findMany({
+            where: {
+                OR: [
+                    { nome: { contains: filter.q.toLowerCase() } },
+                    {
+                        produtos: {
+                            some: {
+                                nome: { contains: filter.q.toLowerCase() },
+                            },
+                        },
+                    },
+                ],
             },
-          },
-          
-        ],
-      },
-    });
+        });
 
-    return result;
-  } catch (error) {
-    console.error("Erro ao buscar lojas:", error);
-    throw error;
-  } finally {
-    await prisma.$disconnect();
-  }
+        return result;
+    } catch (error) {
+        console.error("Erro ao buscar lojas:", error);
+        throw error;
+    } finally {
+        await prisma.$disconnect();
+    }
 };
 
 export default {
-  findBy,
+    findBy,
 };
