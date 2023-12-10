@@ -1,0 +1,176 @@
+.seller-register-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #4dac79;
+  border-radius: 15px;
+  padding: 35px;
+  width: fit-content;
+  position: relative;
+  margin: 0 auto;
+  top: 5vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.seller-register-header {
+  height: fit-content;
+  justify-content: center;
+  background-color: #008940;
+  border-radius: 10px;
+  width: 90%;
+  margin: 0 auto;
+  position: absolute;
+  top: -2.5vh;
+  padding: 10px 0;
+}
+
+.seller-register-header h1 {
+  margin: 0;
+  color: white;
+}
+
+.seller-register-container form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 35px;
+  margin-bottom: 15px;
+  padding: 30px 30px 0 30px;
+  max-width: 75vw;
+}
+
+.seller-register-container form .form-field {
+  position: relative;
+}
+
+.seller-register-container form input {
+  padding: 20px 35px;
+  border-radius: 10px;
+  border: none;
+  transition: box-shadow 0.25s;
+  font-size: 24px;
+  width: 100%;
+}
+
+.seller-register-container form input:focus {
+  outline: none;
+  box-shadow: 0.5px 0.5px 0 2px #133e79, -0.5px -0.5px 0 2px #133e79;
+}
+
+.seller-register-container form input.error {
+  transition: box-shadow 0.25s;
+  box-shadow: 1px 1px 0 3px red, -1px -1px 0 3px red;
+}
+
+.seller-register-container form input::placeholder {
+  color: rgba(0, 0, 0, 0.8);
+  text-align: left;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.seller-register-container form button {
+  border-radius: 10px;
+  border: none;
+  background-color: #008940;
+  padding: 15px;
+  color: #fff;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.seller-register-container .forgot-password {
+  color: #00602d;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 12.5px;
+}
+
+.seller-register-container .register {
+  margin: 0 auto;
+  color: #fff;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background-color: #133e79;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  margin: 20px 0;
+}
+
+.seller-register-container button,
+.seller-register-container .back {
+  transition: transform 0.25s;
+}
+
+.seller-register-container button:hover,
+.seller-register-container .back:hover {
+  transform: scale3d(1.05, 1.05, 1.05);
+}
+
+.seller-register-container .back {
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: white;
+  background-color: #133e79;
+  text-decoration: none;
+  padding: 10px 30px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span,
+span button {
+  text-align: center;
+  color: #133e79;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  background-color: transparent;
+}
+
+span {
+  margin-bottom: 30px;
+}
+
+.seller-register-container .open-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #133e79;
+  color: white;
+  width: 100%;
+  object-fit: contain;
+  height: 100%;
+  transition: all 0.25s;
+}
+
+.seller-register-container .open-map img {
+  height: 30px;
+}

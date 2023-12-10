@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import Logo from '../../assets/icons/icone-padrao.png';
+import Logo from '../../assets/icons/logoproject.png';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -9,9 +9,9 @@ const Header = () => {
       <div className="container">
         <Link to={'/'} className="logo_unb">
           <img src={Logo} alt="logo localiza" className="logo" />
-          <span className="unb"> UnB </span>
+          <span className="unb"> </span>
         </Link>
-        <span className="text"> Restaurante ou Vendedor </span>
+        <span className="text"> </span>
       </div>
       <div>
         <Link to="/register" className="create-account">

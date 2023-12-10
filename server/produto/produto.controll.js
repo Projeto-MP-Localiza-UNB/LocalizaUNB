@@ -2,6 +2,11 @@ import Produto from "./produto.service.js";
 import JwtGuard from "../guards/jwt.guard.js";
 import { Router } from "express";
 
+/**
+ * @description Essas são as rotas de controle dos produtos
+ * Temos aqui as diversas rotas para os produtos
+ */
+
 const produtoRotas = Router();
 
 const produto = new Produto();

@@ -1,6 +1,6 @@
 header {
   width: 100%;
-  height: 8.75rem;
+  height: 6.75rem;
   background: #4dac79;
   display: flex;
   justify-content: space-between;
@@ -17,8 +17,8 @@ header {
 
 .logo {
   margin: 1.87rem 1.1rem 1.87rem 1.87rem;
-  width: 5rem;
-  height: 5rem;
+  width: 17rem;
+  height: 6rem;
   flex-shrink: 0;
 }
 

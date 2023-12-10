@@ -1,38 +1,32 @@
 {
-    "name": "back-end-localiza-unb",
-    "version": "1.0.0",
-    "description": "Back-end do projeto \"Localiza UnB\"",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "test": "jest --passWithNoTests"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Projeto-MP-Localiza-UNB/back-end-localiza-unb.git"
-    },
-    "type": "module",
-    "author": "Nilo, Higor, Herisson",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Projeto-MP-Localiza-UNB/back-end-localiza-unb/issues"
-    },
-    "homepage": "https://github.com/Projeto-MP-Localiza-UNB/back-end-localiza-unb#readme",
-    "dependencies": {
-        "@prisma/client": "^5.6.0",
-        "bcrypt": "^5.1.1",
-        "express": "^4.18.2",
-        "jsonwebtoken": "^9.0.2",
-        "prisma": "^5.6.0"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.23.3",
-        "@babel/preset-env": "^7.23.3",
-        "@faker-js/faker": "^8.3.1",
-        "@types/jest": "^29.5.10",
-        "babel-jest": "^29.7.0",
-        "jest": "^29.7.0",
-        "jest-mock-extended": "^3.0.5",
-        "supertest": "^6.3.3"
-    }
+  "name": "back-end-localiza-unb",
+  "version": "1.0.0",
+  "description": "Back-end do projeto \"Localiza UnB\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --passWithNoTests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Projeto-MP-Localiza-UNB/back-end-localiza-unb.git"
+  },
+  "type": "module",
+  "author": "Nilo, Higor, Herisson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Projeto-MP-Localiza-UNB/back-end-localiza-unb/issues"
+  },
+  "homepage": "https://github.com/Projeto-MP-Localiza-UNB/back-end-localiza-unb#readme",
+  "dependencies": {
+    "@prisma/client": "^4.15.0",
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.10",
+    "jest": "^29.7.0",
+    "prisma": "^4.15.0"
+  }
 }

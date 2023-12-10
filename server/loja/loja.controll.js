@@ -27,7 +27,7 @@ lojasRotas.post("/cadastrarLoja", async (enviado, resposta) => {
     }
 });
 
-lojasRotas.post("/entrar", async (enviado, resposta) => {
+lojasRotas.post("/entrarLoja", async (enviado, resposta) => {
     const { email, senha } = enviado.body;
     try {
         const token = await loja.entrarLoja(email, senha);

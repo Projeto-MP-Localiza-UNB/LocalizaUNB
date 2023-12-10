@@ -23,7 +23,8 @@ model Loja{
   latitude_fixa Float?
   quantidade_avaliacao Int @default(0)
   nota Int @default(5)
-  produtos Produto[] 
+  produtos Produto[]
+  tags Tags[] 
 }
 
 model Produto{
@@ -43,6 +44,10 @@ model Usuario{
   email String @unique
   senha String
   admin Boolean @default(false)
-  longitude_fixa Float
-  latitude_fixa Float
+}
+
+model Tags {
+  id Int @id @default(autoincrement())
+  tag String
+  lojas Loja[]
 }
