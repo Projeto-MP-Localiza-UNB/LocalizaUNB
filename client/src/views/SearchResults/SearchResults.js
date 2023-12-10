@@ -19,7 +19,7 @@ export default function SearchResults() {
         
         <li key={item.id}>
           
-          <Card product={item} renderType={'lojas' }/>
+          <Card restaurant={item} renderType={'lojas' }/>
 
         </li>
       ))
