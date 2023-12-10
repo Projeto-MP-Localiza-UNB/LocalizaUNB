@@ -14,9 +14,11 @@ import { Link } from 'react-router-dom';
  * @returns
  */
 
-const cardapio = [{nome:"Cachorro quente"}, {nome:"Coxinha"}, {nome:"Torta"}, {nome:"Cachorro frio"}, {nome:"Salgado"}, {nome:"Pão de queijo"}, ]
-
 const ModalItem = ({ product = null, open, onCloseModal }) => {
+  const hasProducts = product && product.produtos && product.produtos.length > 0;
+  console.log('Dados da loja:', product);
+  console.log('Produtos:', product.produtos);
+
   return (
     <div>
       <Modal
@@ -43,12 +45,22 @@ const ModalItem = ({ product = null, open, onCloseModal }) => {
         </h1>
 
         <div className="cardapio">
-          <h2>Produtos a venda:</h2>
-          <ul>{
-            cardapio.map((item, i) => <li key={i}>{ item.nome }</li>)
-          }</ul>
-      </div>
-        
+          
+          <h2>Produtos à venda:</h2>
+          <ul>
+            {hasProducts ? (
+              product.produtos.map((produto) => (
+                <li key={produto.id}>
+                  <strong>{produto.nome}</strong> - {produto.descricao}
+                  
+                </li>
+              ))
+            ) : (
+              <p>Nenhum produto disponível.</p>
+            )}
+          </ul>
+        </div>
+
         <div>
           <Link
             className="contato"
@@ -58,8 +70,7 @@ const ModalItem = ({ product = null, open, onCloseModal }) => {
               e.preventDefault();
             }}
           >
-            {' '}
-            <IoMailOpenOutline size={16} /> Entre em contato com a loja{' '}
+            <IoMailOpenOutline size={16} /> Entre em contato com a loja
           </Link>
         </div>
       </Modal>

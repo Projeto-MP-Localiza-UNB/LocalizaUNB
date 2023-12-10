@@ -24,6 +24,9 @@ const findBy = async (filter) => {
           
         ],
       },
+      include: {
+        produtos: true, // Inclui os produtos associados a cada loja
+      },
     });
 
     return result;
