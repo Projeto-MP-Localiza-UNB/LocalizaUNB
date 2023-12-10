@@ -14,6 +14,8 @@ import { Link } from 'react-router-dom';
  * @returns
  */
 
+const cardapio = [{nome:"Cachorro quente"}, {nome:"Coxinha"}, {nome:"Torta"}, {nome:"Cachorro frio"}, {nome:"Salgado"}, {nome:"Pão de queijo"}, ]
+
 const ModalItem = ({ product = null, open, onCloseModal }) => {
   return (
     <div>
@@ -31,11 +33,22 @@ const ModalItem = ({ product = null, open, onCloseModal }) => {
           alt={'imagem do produto'}
           className="produto-img"
         />
-        <h1>{product.nome}</h1>
-        <span className="review">
-          <FaStar size={16} /> {product.nota}
-        </span>
-        <p>{product.descricao}</p>
+
+        <h1>
+          {product.nome}
+          <span className='review'>
+            <FaStar size={16} />
+            {product.nota}
+          </span>
+        </h1>
+
+        <div className="cardapio">
+          <h2>Produtos a venda:</h2>
+          <ul>{
+            cardapio.map((item, i) => <li key={i}>{ item.nome }</li>)
+          }</ul>
+      </div>
+        
         <div>
           <Link
             className="contato"
