@@ -40,7 +40,7 @@ const Card = ({ product = null, restaurant = null, renderType }) => {
               <span className="review">
                 <FaStar size={16} /> {restaurant.nota}
               </span>
-              <span>{` - ${restaurant.quantidade_avaliacao}`}</span>
+              <span>{` - ${restaurant.quantidade_avaliacao} avaliações`}</span>
             </div>
           </>
         )}

@@ -31,7 +31,11 @@ const ModalItem = ({ product = null, open, onCloseModal }) => {
         }}
       >
         <img
-          src={product.imagem}
+          src={
+            product.imagem
+              ? `http://localhost:5000${product?.imagem}`
+              : null
+          }
           alt={'imagem do restaurante'}
           className="produto-img"
         />
