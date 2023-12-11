@@ -1,6 +1,5 @@
 import "./Card.css";
 import { FaStar } from "react-icons/fa6";
-import PlaceholderImage from "../../../../assets/placeholders/placeholder-400x400.png";
 
 import { calculaDistancia } from "../../../../components/gps/calculoDist";
 
