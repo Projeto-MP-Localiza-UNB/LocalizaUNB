@@ -13,10 +13,9 @@ const Card = ({ product = null, restaurant = null, renderType }) => {
     <div className="box">
       <img
         src={
-          restaurant.imagem !== "/public/imgs/.jpg" ||
-          product?.imagem !== "/public/imgs/.jpg"
-            ? `http://localhost:5000${restaurant?.imagem || product?.imagem}`
-            : PlaceholderImage
+          product.imagem && product.imagem.length > 0 && product.imagem.length <= 50
+            ? `http://localhost:5000${product.imagem}`
+            : product.imagem
         }
         alt={restaurant != null ? "imagem do restaurante" : "imagem do produto"}
         className="card-img"
