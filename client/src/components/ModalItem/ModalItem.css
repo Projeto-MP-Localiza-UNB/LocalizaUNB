@@ -54,6 +54,11 @@ content {
   align-items: center;
 }
 
+.cardapio p{
+  text-align: center;
+  margin-left: 0;
+}
+
 .cardapio h2{
   margin: 0;
 }

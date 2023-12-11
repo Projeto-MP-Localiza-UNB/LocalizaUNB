@@ -32,7 +32,7 @@ const ModalItem = ({ product = null, open, onCloseModal }) => {
       >
         <img
           src={product.imagem}
-          alt={'imagem do produto'}
+          alt={'imagem do restaurante'}
           className="produto-img"
         />
 
