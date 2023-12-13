@@ -1,0 +1,23 @@
+Projeto React e Node.js com Prisma - Leia-me
+
+Este repositório contém um projeto full-stack desenvolvido com React no frontend, Node.js no backend e Prisma como ORM para interação com o banco de dados. Abaixo, você encontrará informações sobre a estrutura do projeto e instruções para instalação e execução.
+
+.
+├── client/                 # Pasta do Frontend (React)
+├── server/                 # Pasta do Backend (Node.js)
+├── npm.bat                 # Script para instalar as dependências
+├── start.bat               # Script para iniciar os servidores do frontend e backend
+├── prisma.bat              # Script para iniciar o servidor do banco de dados do Prisma
+└── .git/                   # Pasta do sistema de controle de versão Git
+
+
+Instalação
+Execute o script npm.bat para instalar as dependências tanto para o frontend quanto para o backend:
+
+Execução
+Para iniciar os servidores do frontend e backend simultaneamente, utilize o script start.bat:
+Este comando iniciará o servidor do frontend e backend, permitindo que você acesse o aplicativo em http://localhost:3000. e http://localhost:5000
+
+Para iniciar o servidor do banco de dados do Prisma, utilize o script prisma.bat:
+
+Este comando iniciará o servidor do Prisma para interação com o banco de dados.

@@ -4,8 +4,7 @@
   "description": "Back-end do projeto \"Localiza UnB\"",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests --transformIgnorePatterns \"node_modules/(?!(module-you-want-to-transform)/)\""
   },
   "repository": {
     "type": "git",
@@ -27,7 +26,10 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
     "@types/jest": "^29.5.10",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "prisma": "^4.15.0"
   }
