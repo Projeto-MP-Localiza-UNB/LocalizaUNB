@@ -1,0 +1,110 @@
+content {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.produto-img {
+  margin-top: 1.87rem;
+  width: min(220px, 50%);
+  height: 75%;
+  border-radius: 0.9375rem;
+}
+
+.modal-overlay {
+  background: rgba(255, 255, 255, 0.338);
+}
+
+.modal-produto {
+  background: #b2dbbf;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  border-radius: 0.9375rem;
+}
+
+.modal-produto p {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.87rem;
+  width: 90%;
+  text-align: justify;
+}
+
+.modal-produto h1 span {
+  margin-left: 10px;
+}
+
+.contato {
+  color: black;
+  text-decoration: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.cardapio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardapio p{
+  text-align: center;
+  margin-left: 0;
+}
+
+.cardapio h2{
+  margin: 0;
+}
+
+.cardapio ul {
+  display: block;
+  margin-left: -10px;
+  text-align: left;
+  max-height: 170px;
+  overflow-y: auto;
+  width: min(380px, 80%);
+}
+
+.cardapio ul li {
+  display: block;
+  position: relative;
+}
+
+.cardapio ul li:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.cardapio ul li:before {
+  content: "";
+  position: absolute;
+  top: 1.2em;
+  left: -30px;
+  margin-top: -.9em;
+  background: #008940;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+
+.cardapio ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.cardapio ::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+.cardapio ::-webkit-scrollbar-thumb {
+  background: #4dac79; 
+}
+
+.cardapio ::-webkit-scrollbar-thumb:hover {
+  background: #377b57; 
+}

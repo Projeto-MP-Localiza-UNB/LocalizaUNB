@@ -26,7 +26,7 @@ export default function Filter({
       <Search setter={setResults} input={setInput} loading={setLoading} />
       <div className="sort">
         <div className="options">
-          <button onClick={() => setType('lojas')}>Produtos</button>
+          <button onClick={() => setType('produto')}>Pesquisa</button>
           <button onClick={() => setType('loja')}>Lojas</button>
           <svg width="100%" height="5" className={['sign', type].join(' ')}>
             <rect x="0" y="0" width="100%" height="5" rx="5" fill="#3265A2" />

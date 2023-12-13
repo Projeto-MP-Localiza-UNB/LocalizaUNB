@@ -6,11 +6,13 @@ import Login from './views/Login/Login';
 import Register from './views/Register/Register';
 import SearchResults from './views/SearchResults/SearchResults';
 import SellerRegister from './views/SellerRegister/SellerRegister';
+import ErrorPage from './views/ErrorPage/ErrorPage';
 
 export const routes = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',

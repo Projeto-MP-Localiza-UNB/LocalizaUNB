@@ -5,6 +5,7 @@ import FormService from '../../services/formService';
 import Error from '../../shared/error/Error';
 import Loading from '../../shared/loading/Loading';
 import LocalSelector from './components/LocalSelector/LocalSelector';
+import Notification from '../../shared/notification/Notification';
 
 import './SellerRegister.css';
 import map from './assets/map.png';
@@ -14,12 +15,12 @@ import DragAndDrop from './components/DragAndDrop/DragAndDrop';
 export default function SellerRegister() {
   const [formData, setFormData] = useState({
     name: '',
-    storeName: '',
     email: '',
     password: '',
     repeat: '',
     local: {},
-    image: '',
+    storeName: '',
+    storeImage: '',
   });
   const [hasErrors, setHasErrors] = useState({
     name: null,
@@ -28,10 +29,15 @@ export default function SellerRegister() {
     password: null,
     repeat: null,
     local: null,
-    image: null,
+    storeImage: null,
   });
   const [loading, setLoading] = useState(false);
   const [openMap, setOpenMap] = useState(false);
+  const [notification, setNotification] = useState({
+    show: null,
+    message: null,
+    type: null,
+  });
 
   const passwordInput = useRef();
   const repeatPasswordInput = useRef();
@@ -40,37 +46,119 @@ export default function SellerRegister() {
 
   useEffect(() => {
     if (!openMap && Object.values(formData.local).length) {
-      setHasErrors({ ...hasErrors, local: false });
+      setHasErrors((errors) => {
+        return { ...errors, local: false };
+      });
     }
-  }, [openMap, formData, hasErrors]);
+  }, [openMap, formData]);
 
-  function handleLogin(e) {
+  function handleRegistration(e) {
     e.preventDefault();
-    const form = e.target;
-    const data = Object.fromEntries(new FormData(form).entries());
 
     const errors = {
-      name: !FormService.validateName(data.name),
-      email: !FormService.validateEmail(data.email),
-      password: !FormService.validatePassword(data.password),
-      repeat: !FormService.validatePassword(data.password, true, data.repeat),
-      storeName: !FormService.validateName(data.storeName),
+      name: !FormService.validateName(formData.name),
+      email: !FormService.validateEmail(formData.email),
+      password: !FormService.validatePassword(formData.password),
+      repeat: !FormService.validatePassword(
+        formData.password,
+        true,
+        formData.repeat
+      ),
+      storeName: !FormService.validateName(formData.storeName),
       local: !Object.values(formData.local).length,
-      image: !formData.image,
     };
     setHasErrors(errors);
     if (!Object.values(errors).includes(true)) {
       setLoading(true);
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-      // do something
+      const data = {
+        nome: formData.storeName,
+        email: formData.email,
+        senha: formData.password,
+        imagem: formData.storeImage,
+        longitude_fixa: formData.local.lat,
+        latitude_fixa: formData.local.lng,
+      };
+
+      try {
+        FormService.post('cadastrarLoja', JSON.stringify(data)).then((res) => {
+          setLoading(false);
+          switch (res.status) {
+            case 200:
+              setNotification({
+                show: true,
+                message: 'Cadastro realizado com sucesso! :)',
+                type: 'success',
+              });
+              setTimeout(() => {
+                navigate('/');
+              }, 4000);
+              break;
+            case 400:
+              setNotification(() => {
+                return {
+                  show: true,
+                  message: 'Erro no cadastro, tente novamente mais tarde! :(',
+                  type: 'error',
+                };
+              });
+              setTimeout(
+                () =>
+                  setNotification((obj) => {
+                    return { ...obj, show: false };
+                  }),
+                3000
+              );
+              break;
+            default:
+              setNotification(() => {
+                return {
+                  show: true,
+                  message: 'Erro no cadastro, tente novamente mais tarde! :(',
+                  type: 'error',
+                };
+              });
+              setTimeout(
+                () =>
+                  setNotification((obj) => {
+                    return { ...obj, show: false };
+                  }),
+                3000
+              );
+              return;
+          }
+        });
+      } catch (e) {
+        setNotification(() => {
+          return {
+            show: true,
+            message:
+              'Erro no cadastro, tente novamente mais tarde! :(' +
+              `\n Erro: ${e}`,
+            type: 'error',
+          };
+        });
+        setTimeout(
+          () =>
+            setNotification((obj) => {
+              return { ...obj, show: false };
+            }),
+          3000
+        );
+      }
     }
   }
-
   return (
     <>
-      <Loading status={loading} />
+      <Loading
+        status={loading}
+        fitContainer={true}
+        message={'Enviado dados...'}
+      />
+      <Notification
+        show={notification.show}
+        message={notification.message}
+        type={notification.type}
+      />
       <LocalSelector
         open={openMap}
         setOpen={setOpenMap}
@@ -87,13 +175,13 @@ export default function SellerRegister() {
         <header className="seller-register-header">
           <h1>Cadastro de Vendedores</h1>
         </header>
-        <form ref={form} onSubmit={handleLogin} noValidate>
+        <form ref={form} onSubmit={handleRegistration} noValidate>
           <div className="form-field" style={{ gridColumn: '1', gridRow: '1' }}>
             <input
               type="name"
               name="name"
               id="name"
-              placeholder="Nome"
+              placeholder="Nome de usuário"
               className={hasErrors.name ? 'error' : ''}
               value={formData.name}
               onChange={(e) => {
@@ -102,7 +190,11 @@ export default function SellerRegister() {
             />
             <Error
               show={hasErrors.name}
-              message="Insira um nome válido (máx. de 50 caracteres)"
+              message={
+                formData.name
+                  ? 'Campo obrigatório'
+                  : 'Insira um nome válido (máx. de 50 caracteres)'
+              }
             />
           </div>
           <div className="form-field" style={{ gridColumn: '1', gridRow: '2' }}>
@@ -160,7 +252,7 @@ export default function SellerRegister() {
           <div className="form-field" style={{ gridColumn: '2', gridRow: '1' }}>
             <input
               type="text"
-              name="store_name"
+              name="storeName"
               id="store-name"
               placeholder="Nome da loja"
               className={hasErrors.storeName ? 'error' : ''}
@@ -171,7 +263,11 @@ export default function SellerRegister() {
             />
             <Error
               show={hasErrors.storeName}
-              message="Máximo de 50 caracteres"
+              message={
+                formData.storeName
+                  ? 'Campo obrigatório'
+                  : 'Máximo de 50 caracteres'
+              }
             />
           </div>
           <div
@@ -208,8 +304,9 @@ export default function SellerRegister() {
             style={{ gridColumn: '2', gridRow: '3/5' }}
           >
             <DragAndDrop
-              setData={(data) => setFormData({ ...formData, image: data })}
+              setData={(data) => setFormData({ ...formData, storeImage: data })}
               label={'Imagem da loja (opcional)'}
+              name="storeImage"
             />
           </div>
           <button style={{ gridColumn: '2', gridRow: '5' }}>Cadastrar</button>

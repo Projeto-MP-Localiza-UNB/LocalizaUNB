@@ -5,7 +5,6 @@ import prisma from "../libs/prisma.js";
 /**
  * Classe que representa uma Loja com métodos para cadastro, entrada, busca e retorno de lojas.
  */
-
 class Loja {
     /**
      * @description Cadastra uma nova loja no banco de dados.
@@ -22,9 +21,9 @@ class Loja {
         email,
         nome,
         senha,
-        imagem,
         longitude_fixa,
-        latitude_fixa
+        latitude_fixa,
+        imagem = null
     ) {
         const salt = await bcrypt.genSalt();
         senha = await bcrypt.hash(senha, salt);
@@ -77,7 +76,7 @@ class Loja {
      */
     async retornaLoja(id) {
         try {
-            const loja = await prisma.loja.findUnique({
+            const loja = await prisma.usuario.findUnique({
                 where: { id },
                 select: {
                     imagem: true,

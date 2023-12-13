@@ -17,11 +17,11 @@ lojasRotas.post("/cadastrarLoja", async (enviado, resposta) => {
             email,
             nome,
             senha,
-            imagem,
             longitude_fixa,
-            latitude_fixa
+            latitude_fixa,
+            imagem
         );
-        resposta.status(201).json(novaLoja);
+        resposta.status(200).json(novaLoja);
     } catch (e) {
         resposta.status(400).json({ erro: e.message });
     }
@@ -33,7 +33,7 @@ lojasRotas.post("/entrarLoja", async (enviado, resposta) => {
         const token = await loja.entrarLoja(email, senha);
         resposta.status(200).json(token);
     } catch (e) {
-        resposta.status(400).json({ message: e.message });
+        resposta.status(400).json({ status: 400, message: e.message });
     }
 });
 

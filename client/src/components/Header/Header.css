@@ -60,11 +60,11 @@ header {
   font-weight: 600;
   padding: 1rem 2.5rem;
   border-radius: 0.9375rem;
-  background: #008940;
+  background-color: #008940;
   margin-right: 3rem;
 }
 
 .login:hover {
   color: #c4c4c4;
-  background: #006b32;
+  background-color: #006b32;
 }

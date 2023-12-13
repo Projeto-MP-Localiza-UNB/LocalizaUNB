@@ -54,10 +54,30 @@ export default class FormService {
    * @param {string} params
    * @returns {Promise} Resposta em formato JSON
    */
-  static async get(resource, params = '') {
-    const url = `${this.apiURL}/${resource}/${params}`;
+  static async get(resource, query = '') {
+    const url = `${this.apiURL}/${resource}${query ? `?q=${query}` : ''}`;
     const res = await fetch(url);
-    const json = await res.json();
+    const json = { status: res.status, data: await res.json() };
+    return json;
+  }
+
+  /**
+   * Método para requisições POST à API do projeto.
+   * @param {string} resource
+   * @param {string} params
+   * @param {JSON} body
+   * @returns {Promise} Resposta em formato JSON
+   */
+  static async post(resource, body = null, params = '') {
+    const url = `${this.apiURL}/${resource}/${params}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      body: body,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const json = { status: res.status, data: await res.json() };
     return json;
   }
 }

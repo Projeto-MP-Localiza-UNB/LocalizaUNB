@@ -1,0 +1,58 @@
+.error-page {
+  background-size: contain;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+}
+
+.error-container {
+  background-color: #4dac79;
+  border-radius: 15px;
+  width: 600px;
+  height: fit-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 2rem 1rem 2rem;
+  box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+}
+
+.error-container span {
+  text-align: center;
+  color: #133e79;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 30px;
+}
+
+.voltar-home {
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: white;
+  background-color: #133e79;
+  text-decoration: none;
+  padding: 10px 30px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s;
+}
+
+.voltar-home:hover {
+  transform: scale3d(1.05, 1.05, 1.05);
+}
