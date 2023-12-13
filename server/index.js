@@ -29,9 +29,9 @@ app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(userRotas);
 app.use(lojasRotas);
+
 app.use(produtoRotas);
 app.use(pesquisaRotas);
 app.use(rotas);
-app.listen(5000, () => {
-  console.log('Servidor rodando na porta 5000');
-});
+
+export default app;
