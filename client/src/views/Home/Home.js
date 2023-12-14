@@ -6,6 +6,11 @@ import { Search } from '../../shared/search/Search';
 import Loading from '../../shared/loading/Loading';
 import GPS from '../../components/gps/GPS';
 
+/**
+ * Componente de página inicial.
+ *
+ * @returns {JSX.Element} O elemento JSX da página inicial.
+ */
 const Home = () => {
   const [results, setResults] = useState([]);
   const [input, setInput] = useState([]);

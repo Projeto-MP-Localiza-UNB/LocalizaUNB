@@ -8,6 +8,11 @@ import Card from './components/Card/Card';
 
 import ModalItem from '../../components/ModalItem/ModalItem';
 
+/**
+ * Componente de resultados de busca.
+ *
+ * @returns {JSX.Element} O elemento JSX do componente.
+ */
 export default function SearchResults() {
   const [results, setResults, input, setInput, setLoading] = useOutletContext();
   const [open, setOpen] = useState(false);

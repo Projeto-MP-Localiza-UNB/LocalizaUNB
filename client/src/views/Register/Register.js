@@ -5,6 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../shared/loading/Loading';
 import FormService from '../../services/formService';
 
+/**
+ * Função de registro de usuário.
+ *
+ * @returns {JSX.Element} O componente de registro.
+ */
 export default function Register() {
   const [hasErrors, setHasErrors] = useState({
     name: null,

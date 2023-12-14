@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom';
 import Loading from '../../shared/loading/Loading';
 import FormService from '../../services/formService';
 
+/**
+ * Função de login.
+ *
+ * @returns {JSX.Element} O componente de login.
+ */
 export default function Login() {
   const [hasErrors, setHasErrors] = useState({ email: null, password: null });
   const [loading, setLoading] = useState(false);

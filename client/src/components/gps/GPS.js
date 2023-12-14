@@ -8,6 +8,17 @@ import { calculaDistancia } from './calculoDist';
 
 const UNBcoordinates = { lat: -15.766097, lng: -47.870604 };
 
+/**
+ * Componente GPS.
+ *
+ * @param {Object} props - Propriedades do componente.
+ * @param {Object} props.userCoordinates - Coordenadas do usuário.
+ * @param {Object} props.marker - Marcador do mapa.
+ * @param {Function} props.setMarker - Função para definir o marcador do mapa.
+ * @param {boolean} [props.showMessage=false] - Indica se a mensagem deve ser exibida.
+ * @param {boolean} [props.showLoadingMessage=true] - Indica se a mensagem de carregamento deve ser exibida.
+ * @returns {JSX.Element} - Elemento JSX do componente GPS.
+ */
 const GPS = ({
   userCoordinates,
   marker,

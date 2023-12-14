@@ -14,6 +14,16 @@ import { Link } from 'react-router-dom';
  * @returns
  */
 
+/**
+ * Componente de modal para exibir detalhes de um item.
+ *
+ * @component
+ * @param {Object} props - As propriedades do componente.
+ * @param {Object} props.product - O objeto de produto a ser exibido no modal.
+ * @param {boolean} props.open - Indica se o modal está aberto ou fechado.
+ * @param {Function} props.onCloseModal - Função de callback para fechar o modal.
+ * @returns {JSX.Element} O componente de modal com os detalhes do item.
+ */
 const ModalItem = ({ product = null, open, onCloseModal }) => {
   const hasProducts = product && product.produtos && product.produtos.length > 0;
   console.log('Dados da loja:', product);

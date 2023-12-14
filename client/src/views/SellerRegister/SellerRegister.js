@@ -12,6 +12,11 @@ import map from './assets/map.png';
 import ok from './assets/icons8-ok.svg';
 import DragAndDrop from './components/DragAndDrop/DragAndDrop';
 
+/**
+ * Função para registrar um vendedor.
+ *
+ * @returns {JSX.Element} O componente SellerRegister.
+ */
 export default function SellerRegister() {
   const [formData, setFormData] = useState({
     name: '',
