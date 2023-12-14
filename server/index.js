@@ -10,8 +10,10 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import bodyParser from 'body-parser';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const filename = fileURLToPath(
+  require('url').pathToFileURL(__filename).toString()
+);
+const __dirname = dirname(filename);
 
 const app = express();
 // Add header to fix CORS error in front-end requests
