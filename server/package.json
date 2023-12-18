@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --passWithNoTests"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,13 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@faker-js/faker": "^8.3.1",
     "@types/jest": "^29.5.10",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
-    "prisma": "^4.15.0"
+    "prisma": "^4.15.0",
+    "supertest": "^6.3.3"
   }
 }

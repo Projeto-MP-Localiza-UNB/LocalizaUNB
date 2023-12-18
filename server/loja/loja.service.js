@@ -1,8 +1,6 @@
-import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-
-const prisma = new PrismaClient();
+import prisma from '../libs/prisma.js';
 
 /**
  * Classe que representa uma Loja com métodos para cadastro, entrada, busca e retorno de lojas.
@@ -78,7 +76,7 @@ class Loja {
    */
   async retornaLoja(id) {
     try {
-      const loja = await prisma.usuario.findUnique({
+      const loja = await prisma.loja.findUnique({
         where: { id },
         select: {
           imagem: true,
