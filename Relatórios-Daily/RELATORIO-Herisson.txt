@@ -1,0 +1,2 @@
+21/11/2023	1	estudar aulas e laboratórios relacionados	Estudei e implementei um teste local para o Strapi
+22/11/2023	5	estudar aulas e laboratórios relacionados	Continuei estudo do Strapi

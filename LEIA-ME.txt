@@ -12,7 +12,7 @@ Este repositório contém um projeto full-stack desenvolvido com React no fronte
 
 
 Instalação
-Execute o script npm.bat para instalar as dependências tanto para o frontend quanto para o backend: (CASO NÃO INSTALE, FAÇA MANUALMENTE ACESSANDO A PASTA CLIENT E SERVER)
+Execute o script Instalar.bat para instalar as dependências tanto para o frontend quanto para o backend: (CASO NÃO INSTALE, FAÇA MANUALMENTE ACESSANDO A PASTA CLIENT E SERVER)
 
 Execução
 Para iniciar os servidores do frontend e backend simultaneamente, utilize o script start.bat:

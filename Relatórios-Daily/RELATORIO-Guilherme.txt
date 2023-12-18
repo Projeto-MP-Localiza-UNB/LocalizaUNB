@@ -1,0 +1,2 @@
+21/11	1:30h	codificar módulo	Instalando e configurando roteamento front-end
+23/11	6h	codificar módulo	Fazendo a pagina home
