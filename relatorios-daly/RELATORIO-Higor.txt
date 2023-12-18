@@ -1,0 +1,18 @@
+21/11		10H	- projetar	"Projetei os Repositórios no GitHub e Discord para comunicação da equipe"
+22/11/2023	1H	- gerenciar a construção do software	Reunião de alinhamento com a equipe
+22/11/2023	1H	- revisar projetos	" Revisei o uso de Strapi e vamos mudar de ferramenta para Prisma e Node,js"
+22/11/2023	1H	- estudar aulas e laboratórios relacionados		"	Estudar casos de teste com Jest
+23/11/2023	3H	- estudar aulas e laboratórios relacionados		"	Estudei a implementação de novas rotas
+23/11/2023	1H	- projetar		"	"implementei rota inicial junto da localização do usuario"
+24/11/2023	2H	- estudar aulas e laboratórios relacionados		"	"Estudei casos de teste para localização do usuario."
+25/11/2023	3H	- projetar                	Implementei metodo de pesquisa por Tags
+26/11		2H	- projetar                	Solicitação da localização Back End
+26/11		1H	- revisar projetos	Reunião geral
+27/11		1H	- revisar projetos	Apresentação Primeiro Prototipo
+01/12		2H	- projetar                	Mostrar produtos ao pesquisar
+04/12/2023	2H	- projetar                	Mostrar Lojas ao pesquisar
+05/12/2023	3H	- estudar aulas e laboratórios relacionados		"	Implementação do GPS no card.
+06/12/23	2H	- projetar                	Implementação do GPS Usuário 
+08/12/23	5H	- projetar                	Implementar o cálculo da distância 
+09/12/23	1H	- gerenciar a construção do software	Documentar os códigos do GPS
+10/12/23	6H	- projetar                	Criar lojas e testar os módulos de distância 

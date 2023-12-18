@@ -1,0 +1,12 @@
+22/11	01:00:00	-estudar aulas e laboratórios relacionados	Estudo inicial de react
+22/11	00:30:00	- revisar especificações			Releitura da especificação do projeto e analise do Figma
+26/11	01:00:00	-estudar aulas e laboratórios relacionados	Instalando e configurando ambiente de desenvolvimento
+26/11	00:40:00	- revisar código do módulo			Ajustando css de componentes para ficar igual ao figma
+28/11	00:40:00	-estudar aulas e laboratórios relacionados	Trabalho 3
+2/12	03:00:00	-codificar módulo				Começando o componente de Modal do produto
+6/12	00:40:00	- projetar					Adaptando a logo da unb para o projeto
+10/12	03:00:00	-codificar módulo				Terminei o componente Modal para o produto e loja
+10/12	02:30:00	- revisar código do módulo			Ajustei o componente Card para aparecer a distancia ate a loja
+10/12	01:00:00	- revisar código do módulo			Adicionei a possibilidade de entrar em contato com o vendedor por email
+10/12	01:00:00	-gerenciar a construção do software		Alinhamento de definir prioridades com a equipe
+10/12	04:00:00	- revisar código do módulo			Ajustando o front-end do projeto

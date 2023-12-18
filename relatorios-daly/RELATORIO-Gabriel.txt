@@ -1,0 +1,20 @@
+21/11/2023	02:00:00	Codificar módulo	Desenvolvimento do layout base do módulo/tela de login
+22/11/2023	01:20:00	Codificar módulo	Implementação da validação do formulário de login
+22/11/2023	00:20:00	Projetar	Prototipagem da tela de cadastro
+23/11/2023	00:20:00	Codificar módulo	Refatoração de código
+23/11/2023	02:00:00	Codificar módulo	Configuração de links no módulo de login
+23/11/2023	01:00:00	Redigir casos de teste	Iniciei a escrita de testes para o módulo de login
+24/11/2023	04:00:00	Codificar módulo	Criação da tela de cadastro e desenvolvimento de classe de serviço de formulários
+24/11/2023	00:30:00	Revisar código do módulo	Refatoração de código e configuração de roteamento
+24/11/2023	00:30:00	Redigir casos de teste	Escrita de testes unitários para métodos de classe de serviço de formulários
+25/11/2023	00:40:00	Fazer diagramas	Inclusão de fluxo de navegação no protótipo
+25/11/2023	04:00:00	Codificar módulo	Desenvolvimento da tela de apresentação dos resultados de busca por lojas
+25/11/2023	01:00:00	Redigir casos de teste	Escrita de testes unitários para métodos de classe de serviços da apresentação de resultados
+25/11/2023	00:20:00	Revisar código do módulo	Refatoração de código e configuração de roteamento
+26/11/2023	00:20:00	Fazer diagramas	Atualização do protótipo de tela para cadastro de vendedores
+26/11/2023	02:00:00	Codificar módulo /       Revisar código do módulo	Integração do front-end com o back-end (consumo de endpoint)
+27/11/2023	02:00:00	Revisar código do módulo	Refatoração e ajustes de componentes
+28/11/2023	01:00:00	Codificar módulo	Initício da integração com API Maps do Google
+01/12/2023	04:00:00	Codificar módulo	Criação de seletor de localização
+03/12/2023	02:00:00	Documentar com JSDoc	Início de documentação
+10/12/2023	02:00:00	Codificar módulo/ Revisar código do módulo	Implementação do consumo de endpoints

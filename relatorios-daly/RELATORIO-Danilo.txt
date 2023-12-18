@@ -1,0 +1,18 @@
+16/11/2023	6h	projetar	Desenvoli protojitpagem das telas no Figma
+20/11/2023	3h	gerenciar a construção do software	Organizei o trello e montei as estorietas inicias. 
+21/11/2023	1h	gerenciar a construção do software	Reunião de alinhamento com a equipe 
+21/11/2023	1h	fazer diagramas	Defini estrutura do bando de Dados
+21/11/2023	1h	estudar aulas e laboratórios relacionados	Estudo inicial de Strapi
+22/11/2023	1h	Reunião de alinhamento com a equipe 	Reunião de alinhamento com a equipe 
+22/11/2023	1h	revisar projetos	Revisei o uso de Strapi e vamos mudar de ferramenta para Prisma e Node,js
+22/11/2023	2h	estudar aulas e laboratórios relacionados	Revisar prisma e node,js
+22/11/2023	0,5h	codificar módulo	Inicializar banco de dados
+23/11/2023	3h	projetar	Declarar tabelas no Prismas, resolver erros.
+24/11/2023	3h	projetar	Rotas de Lojas
+01/12/2023	3h	projetar	Rotas de Produtos
+07/12/2023	1h	projetar	Rotas de Usuário
+01/12/2023	1h	-gerenciar a construção do software	Alinhamento de definir prioridades com a equipe
+9/12/2023	1h	- revisar código do módulo	Revisar a estrutura do codigos do back-end
+9/12/2023	2h	- documentar com JSdoc	Documentar codigos 
+10/12/2023	1h	-gerenciar a construção do software	Alinhamento de definir prioridades com a equipe
+10/12/2023	3h	- fazer diagramas	

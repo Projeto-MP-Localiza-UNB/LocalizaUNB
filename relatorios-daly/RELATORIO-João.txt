@@ -1,0 +1,5 @@
+26/11	2H	- revisar projetos	Reunião geral
+01/12	3H	- estudar aulas e laboratórios relacionados	Estudo de React 
+05/12	1H	- codificar módulo	Implementar Historietas backend
+06/12	1H	- revisar código do módulo	Revisar historieta implementada
+10/12	2H	- revisar projetos	Reunião geral

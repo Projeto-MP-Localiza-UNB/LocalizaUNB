@@ -1,0 +1,10 @@
+22/11	1H	- codificar módulo	Criei o component Header
+23/11	1H	- codificar módulo	Implementando o component Card
+25/11	2H	- codificar módulo	Finalizei o component Card
+26/11	1H	- revisar projetos	Reunião geral
+29/11	1H	- codificar módulo	Melhorando a UX
+02/12	1H	- projetar		Projetando páginas no Figma
+05/12	2H	- codificar módulo	Melhorando Card
+9/12	3H	- codificar módulo	Criei as páginas de erro
+10/12	3H	- revisar projetos	Reunião Geral
+10/12	3H	- codificar módulo	Melhorando a UX

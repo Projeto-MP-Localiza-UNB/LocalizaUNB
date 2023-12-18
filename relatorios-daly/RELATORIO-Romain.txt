@@ -1,0 +1,7 @@
+06/12/23	2h	estudar aulas e laboratórios relacionados	Implementação do GPS
+06/12/23	2h	estudar aulas e laboratórios relacionados	Implementação de calculo de distância
+06/12/23	1h	projetar	implementação do GPS usuário
+09/12/23	3h	estudar aulas e laboratórios relacionados	Documentação
+09/12/23	2h	estudar aulas e laboratórios relacionados	consumo de end-points
+10/12		6h	revisar projeto					Reunião geral para finalizar o projeto
+10/12		3h	revisar código de módulo			Ajustando o front-end do projeto
