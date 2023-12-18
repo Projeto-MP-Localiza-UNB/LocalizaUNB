@@ -1,3 +1,5 @@
+*Para rodar certifique de estar na Branch(Versão-Final)*
+
 Projeto React e Node.js com Prisma - Leia-me
 
 Este repositório contém um projeto full-stack desenvolvido com React no frontend, Node.js no backend e Prisma como ORM para interação com o banco de dados. Abaixo, você encontrará informações sobre a estrutura do projeto e instruções para instalação e execução.
